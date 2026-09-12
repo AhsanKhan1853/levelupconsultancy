@@ -5,8 +5,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#0B3D91",   // deep navy blue (consultancy trust color)
-        accent: "#F5A623",    // gold/orange CTA accent
+        primary: "#005326",   // deep navy blue (consultancy trust color)
+        accent: "#cc8718",    // gold/orange CTA accent
         dark: "#0A0A0A",
       },
       fontFamily: {
