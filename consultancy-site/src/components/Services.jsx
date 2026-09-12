@@ -9,9 +9,17 @@ export default function Services() {
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {services.map((s) => (
-            <div key={s.title} className="border rounded-xl p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg text-primary">{s.title}</h3>
-              <p className="mt-3 text-gray-600 text-sm">{s.desc}</p>
+            <div
+              key={s.title}
+              className="group bg-white hover:bg-primary rounded-2xl p-6 transition-all duration-300 hover:scale-105"
+              style={{ boxShadow: "0 8px 16px 10px rgba(0, 0, 0, 0.15)" }}
+            >
+              <h3 className="font-bold text-lg text-primary group-hover:text-white transition-colors duration-300">
+                {s.title}
+              </h3>
+              <p className="mt-3 text-gray-600 group-hover:text-white/90 text-sm transition-colors duration-300">
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
