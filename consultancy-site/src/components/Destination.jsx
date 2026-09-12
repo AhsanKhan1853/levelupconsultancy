@@ -8,11 +8,23 @@ export default function Destinations() {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
           {destinations.map((d) => (
-            <div key={d.country} className="bg-white rounded-xl shadow p-6 hover:-translate-y-1 transition">
-              <h3 className="text-xl font-bold text-primary">{d.country}</h3>
-              <p className="text-sm text-gray-600 mt-2">{d.unis}</p>
-              <p className="text-sm text-gray-600">{d.fee}</p>
-              <a href="#contact" className="inline-block mt-4 text-accent font-semibold text-sm">
+            <div
+              key={d.country}
+              className="group bg-secondary hover:bg-primary rounded-2xl p-6 transition-all duration-300 hover:scale-105"
+              style={{ boxShadow: "0 8px 16px -4px rgba(0, 0, 0, 0.15)" }}
+            >
+              <h3 className="text-xl font-bold text-primary group-hover:text-white transition-colors duration-300">
+                {d.country}
+              </h3>
+              <p className="text-sm text-gray-600 group-hover:text-white/90 mt-2 transition-colors duration-300">
+                {d.unis}
+              </p>
+              <p className="text-sm text-gray-600 group-hover:text-white/90 transition-colors duration-300">
+                {d.fee}
+              </p>
+              
+                <a href="#contact"
+                className="inline-block mt-4 text-accent group-hover:text-white font-semibold text-sm transition-colors duration-300">
                 Learn More →
               </a>
             </div>

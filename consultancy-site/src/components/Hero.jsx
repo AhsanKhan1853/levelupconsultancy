@@ -4,7 +4,7 @@ import heroBg from "../assets/hero-bg.jpg";
 const rotatingWords = [
   "Studying Abroad",
   "Visa Guidance",
-  "Scholarship Support",
+  "Scholarships",
   "Test Preparation",
 ];
 
@@ -53,7 +53,7 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-5 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+          <h1 className="text-4xl md:text-4xl font-extrabold leading-tight">
             Your Trusted Partner for{" "}
             <span className="text-accent inline-block" style={{ perspective: "400px" }}>
               {currentWord.split("").map((char, i) => (
