@@ -75,9 +75,9 @@ export default function Hero() {
             <a href="#contact" className="bg-accent px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
               Free Consultation
             </a>
-            <a href="#services" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition">
+            {/* <a href="#services" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition">
               Check Eligibility
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="hidden md:block">
