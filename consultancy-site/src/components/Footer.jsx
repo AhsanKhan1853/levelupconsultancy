@@ -1,3 +1,5 @@
+import { FaInstagram, FaFacebookF } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <footer className="bg-dark text-gray-300 py-12">
@@ -5,7 +7,29 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-bold text-xl">Level Up Consulting</h3>
           <p className="mt-3 text-sm">Guiding students to top universities worldwide since 2004.</p>
+
+          <div className="flex gap-3 mt-4">
+            
+             <a href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-primary transition-colors"
+            >
+              <FaInstagram className="text-sm" />
+            </a>
+            
+             <a href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-primary transition-colors"
+            >
+              <FaFacebookF className="text-sm" />
+            </a>
+          </div>
         </div>
+
         <div>
           <h4 className="text-white font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm">
