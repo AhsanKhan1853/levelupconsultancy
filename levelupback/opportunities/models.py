@@ -1,7 +1,5 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
+from catalog.models import Country, Course
 
 VISA_TYPES = [
     ('study', 'Study Visa'),
@@ -18,10 +16,14 @@ QUALIFICATION_LEVELS = [
 
 class Opportunity(models.Model):
     title = models.CharField(max_length=200)
-    country = models.CharField(max_length=100)
+    country = models.ForeignKey(
+        Country, on_delete=models.PROTECT, related_name='opportunities'
+    )
     visa_type = models.CharField(max_length=20, choices=VISA_TYPES, default='study')
     qualification_level = models.CharField(max_length=20, choices=QUALIFICATION_LEVELS, blank=True)
-    course = models.CharField(max_length=150, blank=True)
+    course = models.ForeignKey(
+        Course, on_delete=models.SET_NULL, related_name='opportunities', blank=True, null=True
+    )
     university = models.CharField(max_length=150, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='opportunities/', blank=True, null=True)

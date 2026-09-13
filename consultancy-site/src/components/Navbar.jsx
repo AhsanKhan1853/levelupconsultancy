@@ -17,11 +17,18 @@ export default function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden lg:flex gap-6 xl:gap-8 font-medium">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="hover:text-accent transition-colors">
-              {link.label}
-            </a>
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium">
+          {navLinks.map((link, i) => (
+            <span key={link.label} className="flex items-center gap-6 xl:gap-8">
+              <a href={link.href} className="hover:text-accent transition-colors">
+                {link.label}
+              </a>
+              {i < navLinks.length - 1 && (
+                <span className="inline-block text-accent text-lg select-none" style={{ transform: "rotate(15deg)" }}>
+                  //
+                </span>
+              )}
+            </span>
           ))}
         </nav>
 

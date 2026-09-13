@@ -4,9 +4,10 @@ from .models import Opportunity
 
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
-    list_display = ('title', 'country', 'visa_type', 'is_hot', 'is_active', 'created_at')
+    list_display = ('title', 'country', 'course', 'visa_type', 'is_hot', 'is_active', 'created_at')
     list_filter = ('country', 'visa_type', 'is_hot', 'is_active')
-    search_fields = ('title', 'country', 'university', 'course')
+    search_fields = ('title', 'country__name', 'university', 'course__name')
+    autocomplete_fields = ('country', 'course')
     list_editable = ('is_hot', 'is_active')  # toggle "hot" right from the list view
     fieldsets = (
         ('Basic Info', {

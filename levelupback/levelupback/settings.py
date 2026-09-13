@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'opportunities',
     'stories',
     'feedback',
+    'catalog',
 ]
 
 MIDDLEWARE = [

@@ -23,15 +23,6 @@ export const services = [
   { title: "Post-Arrival Support", desc: "Accommodation and settling-in help once you land." },
 ];
 
-export const destinations = [
-  { country: "UK", unis: "150+ Universities", fee: "£12,000+ / year" },
-  { country: "Canada", unis: "100+ Universities", fee: "CAD 15,000+ / year" },
-  { country: "Australia", unis: "90+ Universities", fee: "AUD 20,000+ / year" },
-  { country: "USA", unis: "200+ Universities", fee: "$25,000+ / year" },
-  { country: "Germany", unis: "70+ Universities", fee: "€3,000+ / year" },
-  { country: "Ireland", unis: "40+ Universities", fee: "€10,000+ / year" },
-];
-
 export const processSteps = [
   "Select Your Program",
   "Submit Application",
