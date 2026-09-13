@@ -12,7 +12,7 @@ export default function OpportunityCard({ opportunity }) {
         )}
         <h3 className="font-bold text-lg text-primary">{title}</h3>
         <p className="text-sm text-gray-500 mt-1">
-          {country} {university && `• ${university}`} {course && `• ${course}`}
+          {country?.name} {university && `• ${university}`} {course?.name && `• ${course.name}`}
         </p>
         <p className="text-sm text-gray-600 mt-3 line-clamp-3">{description}</p>
         {deadline && (

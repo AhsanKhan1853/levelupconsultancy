@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { getCountries } from "../api/countries";
+import { getCourses } from "../api/courses";
 
 const TABS = ["Courses", "Universities", "Scholarships"];
 
@@ -9,13 +11,24 @@ export default function OpportunitySearch() {
   const [course, setCourse] = useState("");
   const [qualification, setQualification] = useState("");
   const [country, setCountry] = useState("");
+  const [countries, setCountries] = useState([]);
+  const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getCountries()
+      .then((data) => setCountries(data.results ?? data))
+      .catch(() => setCountries([]));
+    getCourses()
+      .then((data) => setCourses(data.results ?? data))
+      .catch(() => setCourses([]));
+  }, []);
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (course) params.set("search", course);
+    if (course) params.set("course__slug", course);
     if (qualification) params.set("qualification_level", qualification);
-    if (country) params.set("country", country);
+    if (country) params.set("country__slug", country);
     navigate(`/opportunities?${params.toString()}`);
   };
 
@@ -51,10 +64,11 @@ export default function OpportunitySearch() {
             onChange={(e) => setCourse(e.target.value)}
           >
             <option value="">Select Course</option>
-            <option value="engineering">Engineering</option>
-            <option value="business">Business & Management</option>
-            <option value="computer-science">Computer Science & IT</option>
-            <option value="medicine">Health & Medicine</option>
+            {courses.map((c) => (
+              <option key={c.id} value={c.slug}>
+                {c.name}
+              </option>
+            ))}
           </select>
 
           <select
@@ -74,11 +88,11 @@ export default function OpportunitySearch() {
             onChange={(e) => setCountry(e.target.value)}
           >
             <option value="">Select Location</option>
-            <option value="UK">UK</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="USA">USA</option>
-            <option value="Germany">Germany</option>
+            {countries.map((c) => (
+              <option key={c.id} value={c.slug}>
+                {c.name}
+              </option>
+            ))}
           </select>
         </div>
 
