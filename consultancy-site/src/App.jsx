@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import Services from "./components/Services";
-import Destinations from "./components/Destination";
+import Destinations from "./components/Destinations";
 import ProcessSteps from "./components/ProcessSteps";
 import HotOpportunities from "./components/HotOpportunities";
 import HotStories from "./components/HotStories";

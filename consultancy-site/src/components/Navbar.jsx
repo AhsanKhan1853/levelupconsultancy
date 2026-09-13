@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur shadow-sm z-50">
-      <div className="max-w-7xl mx-auto relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-1x3 mx-auto relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         <a href="#home" className="flex items-center gap-2 whitespace-nowrap">
           <img src={logo} alt="LevelUp Consulting logo" className="h-8 sm:h-10 w-auto" />
           <span className="text-xl sm:text-2xl font-extrabold text-primary">
@@ -17,15 +17,15 @@ export default function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-medium">
           {navLinks.map((link, i) => (
-            <span key={link.label} className="flex items-center gap-6 xl:gap-8">
+            <span key={link.label} className="flex items-center gap-1 xl:gap-8">
               <a href={link.href} className="hover:text-accent transition-colors">
                 {link.label}
               </a>
               {i < navLinks.length - 1 && (
                 <span className="inline-block text-accent text-lg select-none" style={{ transform: "rotate(15deg)" }}>
-                  //
+                  \
                 </span>
               )}
             </span>
