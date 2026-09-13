@@ -26,14 +26,14 @@ export default function OpportunitySearch() {
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (course) params.set("course__slug", course);
+    if (course) params.set("discipline__slug", course);
     if (qualification) params.set("qualification_level", qualification);
     if (country) params.set("country__slug", country);
     navigate(`/opportunities?${params.toString()}`);
   };
 
   return (
-    <div className="relative -mt-10 z-30 max-w-5xl mx-auto px-4">
+    <div className="relative -mt-16 z-30 max-w-5xl mx-auto px-4">
       <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
         {/* Tabs */}
         <div className="flex gap-6 border-b pb-3 mb-6 overflow-x-auto">
@@ -48,12 +48,12 @@ export default function OpportunitySearch() {
               {t}
             </button>
           ))}
-          {/* <span className="ml-auto flex items-center gap-2 text-gray-400 text-sm whitespace-nowrap">
+          <span className="ml-auto flex items-center gap-2 text-gray-400 text-sm whitespace-nowrap">
             Intelligent Search
             <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
               coming soon
             </span>
-          </span> */}
+          </span>
         </div>
 
         {/* Filters */}

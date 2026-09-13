@@ -1,5 +1,5 @@
 from django.db import models
-from catalog.models import Country, Course
+from catalog.models import Country, Course, University
 
 VISA_TYPES = [
     ('study', 'Study Visa'),
@@ -13,6 +13,17 @@ QUALIFICATION_LEVELS = [
     ('phd', 'PhD / Research'),
 ]
 
+STUDY_MODES = [
+    ('on_campus', 'On Campus'),
+    ('online', 'Online'),
+    ('hybrid', 'Hybrid'),
+]
+
+STUDY_FORMATS = [
+    ('full_time', 'Full-time'),
+    ('part_time', 'Part-time'),
+]
+
 
 class Opportunity(models.Model):
     title = models.CharField(max_length=200)
@@ -20,14 +31,46 @@ class Opportunity(models.Model):
         Country, on_delete=models.PROTECT, related_name='opportunities'
     )
     visa_type = models.CharField(max_length=20, choices=VISA_TYPES, default='study')
-    qualification_level = models.CharField(max_length=20, choices=QUALIFICATION_LEVELS, blank=True)
-    course = models.ForeignKey(
-        Course, on_delete=models.SET_NULL, related_name='opportunities', blank=True, null=True
+
+    # --- Course Information ---
+    duration = models.CharField(max_length=50, blank=True, help_text="e.g. '4 year'")
+    qualification_level = models.CharField(
+        max_length=20, choices=QUALIFICATION_LEVELS, blank=True,
+        help_text="Shown as 'Level' on the course info panel"
     )
-    university = models.CharField(max_length=150, blank=True)
+    discipline = models.ForeignKey(
+        Course, on_delete=models.SET_NULL, related_name='opportunities', blank=True, null=True,
+        help_text="Broad field of study, e.g. 'Business & Management'"
+    )
+    specialization = models.CharField(
+        max_length=150, blank=True, help_text="Specific specialization, e.g. 'Accounting'"
+    )
+    language = models.CharField(max_length=50, blank=True, default='English')
+    admission_deadline = models.DateField(blank=True, null=True)
+    intakes = models.CharField(max_length=150, blank=True, help_text="e.g. 'September, January'")
+    study_mode = models.CharField(max_length=20, choices=STUDY_MODES, blank=True)
+    study_format = models.CharField(max_length=20, choices=STUDY_FORMATS, blank=True)
+
+    # --- Tuition Fee ---
+    application_fee = models.CharField(max_length=50, blank=True, help_text="e.g. 'USD 100'")
+    tuition_fee = models.CharField(max_length=50, blank=True, help_text="e.g. 'USD 46,200 / Year'")
+
+    # --- About This University ---
+    university = models.ForeignKey(
+        University, on_delete=models.SET_NULL, related_name='opportunities', blank=True, null=True
+    )
+    location = models.CharField(
+        max_length=150, blank=True,
+        help_text="Shown below the university name on the opportunity card, e.g. 'Boston, Massachusetts, USA'. "
+                   "Leave blank to fall back to the university's own location."
+    )
+
     description = models.TextField()
     image = models.ImageField(upload_to='opportunities/', blank=True, null=True)
-    deadline = models.DateField(blank=True, null=True)
+    logo = models.ImageField(
+        upload_to='opportunities/logos/', blank=True, null=True,
+        help_text="Shown on the opportunity card instead of the university's default logo"
+    )
     is_hot = models.BooleanField(default=False, help_text="Show this on the landing page as a Hot Opportunity")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

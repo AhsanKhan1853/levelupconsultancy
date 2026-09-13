@@ -55,3 +55,48 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+INSTITUTE_TYPES = [
+    ('public', 'Public'),
+    ('private', 'Private'),
+]
+
+
+class University(models.Model):
+    """A university/institute that opportunities can be attached to."""
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=210, unique=True, blank=True)
+    logo = models.ImageField(upload_to='universities/logos/', blank=True, null=True)
+    cover_image = models.ImageField(
+        upload_to='universities/covers/', blank=True, null=True,
+        help_text="Background photo shown behind the logo on the opportunity card"
+    )
+    location = models.CharField(
+        max_length=150, blank=True,
+        help_text="Shown under the university name, e.g. 'Boston, Massachusetts, USA'"
+    )
+    country = models.ForeignKey(
+        Country, on_delete=models.SET_NULL, related_name='universities', blank=True, null=True
+    )
+    institute_type = models.CharField(max_length=10, choices=INSTITUTE_TYPES, blank=True)
+    institute_sector = models.CharField(max_length=100, blank=True, help_text="e.g. 'Non-Profit'")
+    established_year = models.PositiveIntegerField(blank=True, null=True)
+    campus = models.CharField(max_length=150, blank=True, help_text="e.g. 'Main Campus'")
+    address = models.TextField(blank=True)
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name_plural = 'Universities'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
