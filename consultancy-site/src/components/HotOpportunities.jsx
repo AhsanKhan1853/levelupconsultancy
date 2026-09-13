@@ -24,7 +24,7 @@ export default function HotOpportunities() {
         {loading ? (
           <p className="text-center mt-12 text-gray-400">Loading...</p>
         ) : (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mt-12">
             {opportunities.map((op) => (
               <OpportunityCard key={op.id} opportunity={op} />
             ))}
