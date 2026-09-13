@@ -1,6 +1,6 @@
 from rest_framework import viewsets, filters
-from .models import Country, Course, University
-from .serializers import CountrySerializer, CourseSerializer, UniversitySerializer
+from .models import Country, Course
+from .serializers import CountrySerializer, CourseSerializer
 
 
 class CountryViewSet(viewsets.ReadOnlyModelViewSet):
@@ -24,16 +24,4 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CourseSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
-    lookup_field = 'slug'
-
-
-class UniversityViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    GET /api/universities/            -> all active universities, for dropdowns/cards
-    GET /api/universities/?search=emmanuel
-    """
-    queryset = University.objects.filter(is_active=True).select_related('country')
-    serializer_class = UniversitySerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['name', 'location']
     lookup_field = 'slug'

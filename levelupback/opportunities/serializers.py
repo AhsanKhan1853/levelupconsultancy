@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Opportunity
-from catalog.serializers import CountrySerializer, CourseSerializer, UniversitySerializer
-from catalog.models import Country, Course, University
+from catalog.serializers import CountrySerializer, CourseSerializer
+from catalog.models import Country, Course
 
 
 class OpportunitySerializer(serializers.ModelSerializer):
@@ -9,10 +9,10 @@ class OpportunitySerializer(serializers.ModelSerializer):
     logo_url = serializers.SerializerMethodField()
     country = CountrySerializer(read_only=True)
     discipline = CourseSerializer(read_only=True)
-    university = UniversitySerializer(read_only=True)
     qualification_level_display = serializers.CharField(source='get_qualification_level_display', read_only=True)
     study_mode_display = serializers.CharField(source='get_study_mode_display', read_only=True)
     study_format_display = serializers.CharField(source='get_study_format_display', read_only=True)
+    institute_type_display = serializers.CharField(source='get_institute_type_display', read_only=True)
 
     # write-only ids, used when creating/editing via API instead of the free text/relations above
     country_id = serializers.PrimaryKeyRelatedField(
@@ -20,9 +20,6 @@ class OpportunitySerializer(serializers.ModelSerializer):
     )
     discipline_id = serializers.PrimaryKeyRelatedField(
         queryset=Course.objects.all(), source='discipline', write_only=True, required=False, allow_null=True
-    )
-    university_id = serializers.PrimaryKeyRelatedField(
-        queryset=University.objects.all(), source='university', write_only=True, required=False, allow_null=True
     )
 
     class Meta:
@@ -37,7 +34,8 @@ class OpportunitySerializer(serializers.ModelSerializer):
             # Tuition Fee
             'application_fee', 'tuition_fee',
             # About This University
-            'university', 'university_id', 'location',
+            'university_name', 'location', 'institute_type', 'institute_type_display',
+            'institute_sector', 'established_year', 'campus', 'address',
             # Misc
             'description', 'image_url', 'logo_url', 'is_hot', 'created_at',
         ]
