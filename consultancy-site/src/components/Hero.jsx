@@ -72,10 +72,10 @@ export default function Hero() {
             university, and program — from application to visa approval.
           </p>
           <div className="mt-8 flex gap-4">
-            <a href="#contact" className="bg-accent px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+            <a href="#contact" className="bg-accent px-6 py-3 rounded-full hover:opacity-90 transition">
               Free Consultation
             </a>
-            {/* <a href="#services" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition">
+            {/* <a href="#services" className="border border-white px-6 py-3 rounded-full hover:bg-white hover:text-primary transition">
               Check Eligibility
             </a> */}
           </div>
