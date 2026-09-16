@@ -10,22 +10,35 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Loads variables from a .env file (in the same folder as manage.py) into the
+# environment. On Railway/production, real env vars set in the dashboard take
+# precedence and this is a no-op if no .env file exists.
+load_dotenv(BASE_DIR / '.env')
+
+
+def env_list(key, default=''):
+    """Parse a comma-separated env var into a clean list of strings."""
+    raw = os.environ.get(key, default)
+    return [item.strip() for item in raw.split(',') if item.strip()]
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kjj+nvcfq(k!4q5^g!!^nfo54h0(1*1*kcu1x!8mty$qhh9)2v'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-kjj+nvcfq(k!4q5^g!!^nfo54h0(1*1*kcu1x!8mty$qhh9)2v')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env_list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -48,6 +61,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,10 +137,13 @@ USE_TZ = True
 
 INSTALLED_APPS += ['django_filters']
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",   # your Vite React dev server
-]
+CORS_ALLOWED_ORIGINS = env_list('CORS_ALLOWED_ORIGINS', 'http://localhost:5173')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # `collectstatic` gathers everything here to be served
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+}
