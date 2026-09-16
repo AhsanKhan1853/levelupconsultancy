@@ -139,20 +139,14 @@ export default function OpportunityFilters({ filters, setFilter, disciplines, co
       <AccordionSection title="About This University">
         <SelectRow
           label="Institute Type"
-          value={filters["university__institute_type"]}
-          onChange={(v) => setFilter("university__institute_type", v)}
+          value={filters["institute_type"]}
+          onChange={(v) => setFilter("institute_type", v)}
           options={INSTITUTE_TYPE_OPTIONS}
-        />
-        <SelectRow
-          label="Location"
-          value={filters["university__country__slug"]}
-          onChange={(v) => setFilter("university__country__slug", v)}
-          options={countries.map((c) => ({ value: c.slug, label: c.name }))}
         />
         <TextRow
           label="Campus"
-          value={filters["university__campus__icontains"]}
-          onChange={(v) => setFilter("university__campus__icontains", v)}
+          value={filters["campus__icontains"]}
+          onChange={(v) => setFilter("campus__icontains", v)}
           placeholder="e.g. Main Campus"
         />
       </AccordionSection>

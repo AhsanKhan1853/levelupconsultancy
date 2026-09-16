@@ -13,10 +13,10 @@ class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
     GET /api/opportunities/?qualification_level=undergrad
     GET /api/opportunities/?study_mode=on_campus
     GET /api/opportunities/?study_format=full_time
-    GET /api/opportunities/?university__institute_type=private
+    GET /api/opportunities/?institute_type=private
     GET /api/opportunities/?search=engineering
     """
-    queryset = Opportunity.objects.filter(is_active=True).select_related('country', 'discipline', 'university', 'university__country')
+    queryset = Opportunity.objects.filter(is_active=True).select_related('country', 'discipline')
     serializer_class = OpportunitySerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = {
@@ -30,10 +30,8 @@ class OpportunityViewSet(viewsets.ReadOnlyModelViewSet):
         'specialization': ['icontains'],
         'intakes': ['icontains'],
         'duration': ['icontains'],
-        'university__slug': ['exact'],
-        'university__institute_type': ['exact'],
-        'university__country__slug': ['exact'],
-        'university__campus': ['icontains'],
+        'institute_type': ['exact'],
+        'campus': ['icontains'],
         'is_hot': ['exact'],
     }
-    search_fields = ['title', 'discipline__name', 'university__name', 'specialization', 'country__name']
+    search_fields = ['title', 'discipline__name', 'university_name', 'specialization', 'country__name']

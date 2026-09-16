@@ -4,14 +4,14 @@ from .models import Opportunity
 
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
-    list_display = ('title', 'university', 'country', 'discipline', 'qualification_level', 'is_hot', 'is_active', 'created_at')
-    list_filter = ('country', 'visa_type', 'qualification_level', 'study_mode', 'study_format', 'is_hot', 'is_active')
-    search_fields = ('title', 'country__name', 'university__name', 'discipline__name', 'specialization')
-    autocomplete_fields = ('country', 'discipline', 'university')
+    list_display = ('title', 'university_name', 'country', 'discipline', 'qualification_level', 'is_hot', 'is_active', 'created_at')
+    list_filter = ('country', 'visa_type', 'qualification_level', 'study_mode', 'study_format', 'institute_type', 'is_hot', 'is_active')
+    search_fields = ('title', 'country__name', 'university_name', 'discipline__name', 'specialization')
+    autocomplete_fields = ('country', 'discipline')
     list_editable = ('is_hot', 'is_active')  # toggle "hot" right from the list view
     fieldsets = (
         ('Basic Info', {
-            'fields': ('title', 'country', 'visa_type', 'university', 'location')
+            'fields': ('title', 'country', 'visa_type')
         }),
         ('Course Information', {
             'fields': (
@@ -21,6 +21,12 @@ class OpportunityAdmin(admin.ModelAdmin):
         }),
         ('Tuition Fee', {
             'fields': ('application_fee', 'tuition_fee')
+        }),
+        ('About This University', {
+            'fields': (
+                'university_name', 'location', 'institute_type', 'institute_sector',
+                'established_year', 'campus', 'address',
+            )
         }),
         ('Details', {
             'fields': ('description', 'image', 'logo')

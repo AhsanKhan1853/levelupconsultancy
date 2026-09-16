@@ -1,5 +1,5 @@
 from django.db import models
-from catalog.models import Country, Course, University
+from catalog.models import Country, Course
 
 VISA_TYPES = [
     ('study', 'Study Visa'),
@@ -22,6 +22,11 @@ STUDY_MODES = [
 STUDY_FORMATS = [
     ('full_time', 'Full-time'),
     ('part_time', 'Part-time'),
+]
+
+INSTITUTE_TYPES = [
+    ('public', 'Public'),
+    ('private', 'Private'),
 ]
 
 
@@ -56,20 +61,27 @@ class Opportunity(models.Model):
     tuition_fee = models.CharField(max_length=50, blank=True, help_text="e.g. 'USD 46,200 / Year'")
 
     # --- About This University ---
-    university = models.ForeignKey(
-        University, on_delete=models.SET_NULL, related_name='opportunities', blank=True, null=True
+    university_name = models.CharField(
+        max_length=200, blank=True, help_text="e.g. 'Harvard University'"
     )
     location = models.CharField(
         max_length=150, blank=True,
-        help_text="Shown below the university name on the opportunity card, e.g. 'Boston, Massachusetts, USA'. "
-                   "Leave blank to fall back to the university's own location."
+        help_text="Shown below the university name on the opportunity card, e.g. 'Boston, Massachusetts, USA'"
     )
+    institute_type = models.CharField(max_length=10, choices=INSTITUTE_TYPES, blank=True)
+    institute_sector = models.CharField(max_length=100, blank=True, help_text="e.g. 'Non-Profit'")
+    established_year = models.PositiveIntegerField(blank=True, null=True)
+    campus = models.CharField(max_length=150, blank=True, help_text="e.g. 'Main Campus'")
+    address = models.TextField(blank=True)
 
     description = models.TextField()
-    image = models.ImageField(upload_to='opportunities/', blank=True, null=True)
+    image = models.ImageField(
+        upload_to='opportunities/', blank=True, null=True,
+        help_text="Cover photo shown behind the logo on the opportunity card"
+    )
     logo = models.ImageField(
         upload_to='opportunities/logos/', blank=True, null=True,
-        help_text="Shown on the opportunity card instead of the university's default logo"
+        help_text="University logo shown on the opportunity card"
     )
     is_hot = models.BooleanField(default=False, help_text="Show this on the landing page as a Hot Opportunity")
     is_active = models.BooleanField(default=True)
