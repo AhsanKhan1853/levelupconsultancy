@@ -1,4 +1,4 @@
-import { stats } from "../data/siteData";
+import { stats } from "../DataT/siteData";
 import { HiOutlineAcademicCap, HiOutlineGlobeAlt, HiOutlineUserGroup, HiOutlineBadgeCheck } from "react-icons/hi";
 
 const icons = [HiOutlineAcademicCap, HiOutlineGlobeAlt, HiOutlineUserGroup, HiOutlineBadgeCheck];

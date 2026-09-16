@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { navLinks } from "../data/siteData";
+import { navLinks } from "../DataT/siteData";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import logo from "../assets/logo.png";
