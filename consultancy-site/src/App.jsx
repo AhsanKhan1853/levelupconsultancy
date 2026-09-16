@@ -11,7 +11,7 @@ import OpportunitySearch from "./components/OpportunitySearch";
 import FeedbackForm from "./components/FeedbackForm";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
-import OpportunitiesPage from "./pages/OpportunitiesPage.jsx";
+import OpportunitiesPage from "./pages/OpportunitiesPage";
 
 function LandingPage() {
   return (
