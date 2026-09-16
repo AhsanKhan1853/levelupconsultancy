@@ -1,4 +1,4 @@
-import { processSteps } from "../DataT/siteData";
+import { processSteps } from "../Data/siteData";
 
 export default function ProcessSteps() {
   return (

@@ -1,4 +1,4 @@
-import { services } from "../DataT/siteData";
+import { services } from "../Data/siteData";
 
 export default function Services() {
   return (
