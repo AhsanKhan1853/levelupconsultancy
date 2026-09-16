@@ -31,7 +31,7 @@ export default function OpportunitiesPage() {
         ) : opportunities.length === 0 ? (
           <p className="mt-10 text-gray-400">No opportunities match your filters yet.</p>
         ) : (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mt-10">
             {opportunities.map((op) => (
               <OpportunityCard key={op.id} opportunity={op} />
             ))}
