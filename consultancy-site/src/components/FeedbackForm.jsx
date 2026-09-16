@@ -1,22 +1,43 @@
 import { useState } from "react";
 import { submitFeedback } from "../api/feedback";
 
+const ADMIN_WHATSAPP_NUMBER = "923119653438"; // <-- replace with real number, country code, no + or 00
+
 export default function FeedbackForm() {
   const [form, setForm] = useState({ name: "", email: "", rating: 5, message: "" });
-  const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
+  const [status, setStatus] = useState(null); // null | "sending" | "error"
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const buildWhatsAppMessage = () => {
+    return (
+      `New Feedback Received\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Rating: ${"★".repeat(form.rating)}${"☆".repeat(5 - form.rating)} (${form.rating}/5)\n` +
+      `Message: ${form.message}`
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+
     try {
+      // Still saved in Django admin under Feedback for records
       await submitFeedback(form);
-      setStatus("success");
-      setForm({ name: "", email: "", rating: 5, message: "" });
     } catch {
       setStatus("error");
+      return;
     }
+
+    // Open WhatsApp pre-filled with the feedback, addressed to admin
+    const message = encodeURIComponent(buildWhatsAppMessage());
+    const waUrl = `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${message}`;
+    window.open(waUrl, "_blank");
+
+    setStatus(null);
+    setForm({ name: "", email: "", rating: 5, message: "" });
   };
 
   return (
@@ -75,12 +96,9 @@ export default function FeedbackForm() {
             disabled={status === "sending"}
             className="bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
           >
-            {status === "sending" ? "Submitting..." : "Submit Feedback"}
+            {status === "sending" ? "Sending..." : "Submit & Continue on WhatsApp"}
           </button>
 
-          {status === "success" && (
-            <p className="text-green-600 text-sm text-center">Thanks! Your feedback was submitted.</p>
-          )}
           {status === "error" && (
             <p className="text-red-600 text-sm text-center">Something went wrong. Please try again.</p>
           )}
