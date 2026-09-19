@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,7 +39,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-kjj+nvcfq(k!4q5^g!!^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = env_list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env_list('ALLOWED_HOSTS','localhost,127.0.0.1')
+
 
 
 # Application definition
@@ -94,10 +96,10 @@ WSGI_APPLICATION = 'levelupback.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
+        conn_max_age=600,
+    )
 }
 
 
@@ -119,6 +121,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    CSRF_TRUSTED_ORIGINS = env_list('CSRF_TRUSTED_ORIGINS', 'https://levelupconsultancy-two.vercel.app/')
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
