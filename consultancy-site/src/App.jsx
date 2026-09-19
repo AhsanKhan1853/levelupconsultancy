@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
@@ -12,8 +13,23 @@ import FeedbackForm from "./components/FeedbackForm";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
 import OpportunitiesPage from "./pages/OpportunitiesPage";
+import ServicesPage from "./pages/ServicesPage";
 
 function LandingPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        // Wait a tick for the page to render before scrolling
+        setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 0);
+      }
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [location]);
+
   return (
     <div>
       <Navbar />
@@ -38,6 +54,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/opportunities" element={<OpportunitiesPage />} />
+        <Route path="/services" element={<ServicesPage />} />
       </Routes>
     </BrowserRouter>
   );

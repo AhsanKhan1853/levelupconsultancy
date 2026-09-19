@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../Data/siteData";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
@@ -6,11 +7,44 @@ import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToSection = (href) => {
+    setOpen(false);
+
+    // Plain page routes (e.g. "/services") just navigate normally
+    if (!href.startsWith("#")) {
+      navigate(href);
+      return;
+    }
+
+    // Hash links scroll to a section on the home page
+    if (location.pathname !== "/") {
+      // Navigate back to the home page, then let it scroll to the section
+      navigate("/" + href);
+    } else {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        navigate(href, { replace: true });
+      } else {
+        navigate(href);
+      }
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur shadow-sm z-50">
       <div className="max-w-1x3 mx-auto relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
-        <a href="#home" className="flex items-center gap-2 whitespace-nowrap">
+        <a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            goToSection("#home");
+          }}
+          className="flex items-center gap-2 whitespace-nowrap"
+        >
           <img src={logo} alt="LevelUp Consulting logo" className="h-8 sm:h-10 w-auto" />
           <span className="text-xl sm:text-2xl font-extrabold text-primary">
             Level<span className="text-accent">Up</span> Consulting
@@ -20,7 +54,14 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-medium">
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center gap-1 xl:gap-8">
-              <a href={link.href} className="hover:text-accent transition-colors">
+              <a
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection(link.href);
+                }}
+                className="hover:text-accent transition-colors"
+              >
                 {link.label}
               </a>
               {i < navLinks.length - 1 && (
@@ -69,7 +110,14 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-white border-t px-4 sm:px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} onClick={() => setOpen(false)}>
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(link.href);
+              }}
+            >
               {link.label}
             </a>
           ))}

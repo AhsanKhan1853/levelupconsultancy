@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { services } from "../Data/siteData";
 
 export default function Services() {
@@ -9,7 +10,8 @@ export default function Services() {
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {services.map((s) => (
-            <div
+            <Link
+              to={`/services#${s.slug}`}
               key={s.title}
               className="group bg-white hover:bg-primary rounded-2xl p-6 transition-all duration-300 hover:scale-105"
               style={{ boxShadow: "0 8px 16px 10px rgba(0, 0, 0, 0.15)" }}
@@ -20,8 +22,20 @@ export default function Services() {
               <p className="mt-3 text-gray-600 group-hover:text-white/90 text-sm transition-colors duration-300">
                 {s.desc}
               </p>
-            </div>
+              <span className="inline-block mt-4 text-sm font-semibold text-accent group-hover:text-white transition-colors duration-300">
+                Learn more &rarr;
+              </span>
+            </Link>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            to="/services"
+            className="inline-block bg-accent text-white font-semibold px-8 py-3 rounded-full hover:opacity-90 transition"
+          >
+            View All Services
+          </Link>
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@ export default function OpportunitySearch() {
   };
 
   return (
-    <div className="relative -mt-16 z-30 max-w-5xl mx-auto px-4">
+    <div className="relative -mt-12 z-30 max-w-5xl mx-auto px-4">
       <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8">
         {/* Tabs */}
         <div className="flex gap-6 border-b pb-3 mb-6 overflow-x-auto">
