@@ -4,6 +4,7 @@ import { services } from "../Data/siteData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
+import OfficeGallery from "../components/OfficeGallery";
 import servicesHero from "../assets/services-hero.png";
 
 // Eagerly import every PNG in assets/services so we can look one up by slug
@@ -97,6 +98,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <OfficeGallery />
       <CTABanner />
       <Footer />
     </div>
