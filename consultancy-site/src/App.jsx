@@ -13,9 +13,11 @@ import OpportunitySearch from "./components/OpportunitySearch";
 import FeedbackForm from "./components/FeedbackForm";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
+import CountriesSection from "./components/CountriesSection";
 import OpportunitiesPage from "./pages/OpportunitiesPage";
 import ServicesPage from "./pages/ServicesPage";
 import DestinationsPage from "./pages/DestinationsPage";
+
 
 function LandingPage() {
   const location = useLocation();
@@ -41,6 +43,7 @@ function LandingPage() {
       <Services />
       <HotOpportunities />
       <Destinations />
+      <CountriesSection />
       <ProcessSteps />
       <HotStories />
       <FeedbackForm />

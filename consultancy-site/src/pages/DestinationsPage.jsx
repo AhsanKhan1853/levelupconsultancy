@@ -1,4 +1,4 @@
-import { destinationPrograms } from "../Data/siteData";
+import { destinationPrograms, countries } from "../Data/siteData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
@@ -19,6 +19,51 @@ const imageMap = {
   phd: phdImg,
   diploma: diplomaImg,
 };
+
+function ProgramCard({ program }) {
+  return (
+    <div
+      className="group relative aspect-[8.5/10] rounded-lg overflow-hidden
+                 border-[7px] border-accent shadow-cozy hover:shadow-cozy-lg
+                 hover:-translate-y-1.5 transition-all duration-300"
+    >
+      <img
+        src={imageMap[program.image]}
+        alt={program.degree}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#03361A]/90 via-[#03361A]/15 to-transparent" />
+
+      <h3 className="font-display absolute left-5 right-5 bottom-5 text-cream text-2xl font-semibold drop-shadow transition-opacity duration-300 group-hover:opacity-0">
+        {program.degree}
+      </h3>
+
+      <div className="absolute inset-0 bg-primary/95 px-6 py-7 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="font-display text-2xl font-semibold text-cream">{program.degree}</h3>
+        <span className="block w-10 h-px bg-accent mt-3 mb-3" aria-hidden="true" />
+        <p className="text-sm text-cream/85 leading-relaxed">{program.desc}</p>
+
+        <div className="flex flex-wrap gap-2 mt-4">
+          {program.countries.map((country) => (
+            <span
+              key={country}
+              className="px-3 py-1 rounded-md text-xs font-semibold bg-cream text-primary"
+            >
+              {country}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href="#contact"
+          className="inline-block mt-5 text-milk font-semibold text-sm underline decoration-accent decoration-2 underline-offset-4"
+        >
+          Talk to us about {program.degree}
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export default function DestinationsPage() {
   return (
@@ -52,35 +97,32 @@ export default function DestinationsPage() {
             Every program below is currently open to applicants in the listed countries.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-12">
             {destinationPrograms.map((program) => (
-              <div
-                key={program.degree}
-                className="relative rounded-2xl overflow-hidden min-h-[320px] flex flex-col justify-end"
-                style={{ boxShadow: "0 8px 16px 10px rgba(0,0,0,0.06)" }}
-              >
+              <ProgramCard key={program.degree} program={program} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-oat py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-5">
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink text-center">
+            Countries We Deal With
+          </h2>
+          <p className="mt-3 text-ink/65 max-w-xl mx-auto text-center">
+            Our full network of partner countries across every program level.
+          </p>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 mt-12">
+            {countries.map((c) => (
+              <div key={c.code} className="flex flex-col items-center gap-2">
                 <img
-                  src={imageMap[program.image]}
-                  alt={program.degree}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  src={`https://flagcdn.com/w160/${c.code}.png`}
+                  alt={c.name}
+                  className="w-16 h-16 rounded-full object-cover border-2 border-accent shadow-cozy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent" />
-
-                <div className="relative z-10 p-6 sm:p-7 text-white">
-                  <h3 className="font-bold text-xl">{program.degree}</h3>
-                  <p className="text-sm text-blue-50/90 mt-2 leading-relaxed">{program.desc}</p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {program.countries.map((country) => (
-                      <span
-                        key={country}
-                        className="px-4 py-2 rounded-lg text-sm font-semibold bg-white/95 text-primary"
-                      >
-                        {country}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <span className="text-sm font-semibold text-ink text-center">{c.name}</span>
               </div>
             ))}
           </div>
