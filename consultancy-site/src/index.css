@@ -23,3 +23,24 @@ html, body, #root {
 body {
   @apply font-sans text-gray-800;
 }
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-scroll-right {
+  animation: scroll-right 45s linear infinite;
+}
+.animate-scroll-right:hover {
+  animation-play-state: paused;
+}

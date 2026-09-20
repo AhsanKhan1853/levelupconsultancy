@@ -14,6 +14,7 @@ import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
 import OpportunitiesPage from "./pages/OpportunitiesPage";
 import ServicesPage from "./pages/ServicesPage";
+import DestinationsPage from "./pages/DestinationsPage";
 
 function LandingPage() {
   const location = useLocation();
@@ -44,6 +45,7 @@ function LandingPage() {
       <FeedbackForm />
       <CTABanner />
       <Footer />
+
     </div>
   );
 }
@@ -55,6 +57,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/opportunities" element={<OpportunitiesPage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/destinations" element={<DestinationsPage />} />
       </Routes>
     </BrowserRouter>
   );
