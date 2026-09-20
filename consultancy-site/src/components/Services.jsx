@@ -3,7 +3,7 @@ import { services } from "../Data/siteData";
 import { useAutoScroll } from "../hooks/useAutoScroll";
 
 const logoModules = import.meta.glob("../assets/services/*.png", { eager: true });
-const bgModules = import.meta.glob("../assets/services/bg/*.jpg", { eager: true });
+const bgModules = import.meta.glob("../assets/services/bg/*.webp", { eager: true });
 
 const logos = Object.fromEntries(
   Object.entries(logoModules).map(([path, mod]) => {
@@ -14,7 +14,7 @@ const logos = Object.fromEntries(
 
 const bgImages = Object.fromEntries(
   Object.entries(bgModules).map(([path, mod]) => {
-    const name = path.split("/").pop().replace(".jpg", "");
+    const name = path.split("/").pop().replace(".webp", "");
     return [name, mod.default];
   })
 );

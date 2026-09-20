@@ -4,12 +4,12 @@ import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
 import destinationsHero from "../assets/destinations/destinations-hero.png";
 
-import mbbsImg from "../assets/scholarships/mbbs.png";
-import bdsImg from "../assets/scholarships/bds.png";
-import bachelorsImg from "../assets/scholarships/bachelors.png";
-import mastersImg from "../assets/scholarships/masters.jpg";
-import phdImg from "../assets/scholarships/phd.jpg";
-import diplomaImg from "../assets/scholarships/diploma.jpg";
+import mbbsImg from "../assets/scholarships/mbbs.webp";
+import bdsImg from "../assets/scholarships/bds.webp";
+import bachelorsImg from "../assets/scholarships/bachelors.webp";
+import mastersImg from "../assets/scholarships/masters.webp";
+import phdImg from "../assets/scholarships/phd.webp";
+import diplomaImg from "../assets/scholarships/diploma.webp";
 
 const imageMap = {
   mbbs: mbbsImg,
