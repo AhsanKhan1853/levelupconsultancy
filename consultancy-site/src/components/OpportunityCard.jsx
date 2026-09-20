@@ -19,42 +19,42 @@ export default function OpportunityCard({ opportunity }) {
     location,
   } = opportunity;
 
-  const courseTitle = specialization
-    ? `${specialization}`
-    : title;
+  const courseTitle = specialization ? `${specialization}` : title;
 
   return (
-    <div className="rounded-2xl overflow-hidden bg-white border border-black shadow-[0_0_0_1px_rgba(255,255,255,0.9)] hover:shadow-2xl transition-shadow duration-300">
+    <div className="rounded-pebble overflow-hidden bg-cream border border-rule shadow-cozy hover:shadow-cozy-lg hover:-translate-y-0.5 transition-all duration-300">
       {/* Top: cover image + logo + university name */}
       <div
-        className="relative h-28 flex flex-col items-center justify-center text-center px-3 bg-primary/10 bg-cover bg-center"
+        className="relative h-28 flex flex-col items-center justify-center text-center px-3 bg-primary bg-cover bg-center"
         style={image_url ? { backgroundImage: `url(${image_url})` } : undefined}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
+        {/* a deep green wash rather than flat black — keeps photos warm */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/45 via-primary/65 to-[#03361A]/85" />
 
-        <div className="flex gap-2 absolute top-2 right-2 z-10">
-          {is_hot && (
-            <span className="bg-red-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-              🔥 Hot
-            </span>
-          )}
-        </div>
+        {is_hot && (
+          <span className="absolute top-2.5 right-2.5 z-10 bg-accent text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow">
+            Closing soon
+          </span>
+        )}
 
         <div className="relative z-10 flex flex-col items-center">
           {logo_url ? (
             <img
               src={logo_url}
-              alt={university_name || title}
-              className="h-11 w-11 object-contain bg-primary rounded-full p-0.1 shadow"
+              alt=""
+              aria-hidden="true"
+              className="h-11 w-11 object-contain bg-cream rounded-full p-1 shadow"
             />
           ) : (
-            <div className="h-9 w-9 rounded-full bg-white flex items-center justify-center shadow">
+            <div className="h-10 w-10 rounded-full bg-cream flex items-center justify-center shadow">
               <FaGraduationCap className="text-primary text-lg" />
             </div>
           )}
-          <p className="mt-1.5 font-italic text-accent text-xs">{university_name || "University"}</p>
+          <p className="mt-1.5 font-display italic text-milk text-[13px] leading-tight">
+            {university_name || "University"}
+          </p>
           {location && (
-            <p className="text-[11px] text-white/80 flex items-center gap-1 mt-0.5">
+            <p className="text-[11px] text-cream/80 flex items-center gap-1 mt-0.5">
               <HiOutlineLocationMarker className="shrink-0" /> {location}
             </p>
           )}
@@ -62,10 +62,12 @@ export default function OpportunityCard({ opportunity }) {
       </div>
 
       {/* Bottom: course details */}
-      <div className="p-3.5">
-        <h3 className="font-bold text-base text-primary leading-snug">{courseTitle}</h3>
+      <div className="p-4">
+        <h3 className="font-display font-semibold text-[1.05rem] text-primary leading-snug">
+          {courseTitle}
+        </h3>
 
-        <div className="grid grid-cols-2 gap-y-1.5 gap-x-2 mt-3 text-xs text-gray-600">
+        <div className="grid grid-cols-2 gap-y-1.5 gap-x-2 mt-3 text-xs text-ink/65">
           {qualification_level_display && (
             <span className="flex items-center gap-1.5">
               <HiOutlineAcademicCap className="text-accent shrink-0" /> {qualification_level_display}
@@ -88,19 +90,23 @@ export default function OpportunityCard({ opportunity }) {
           )}
         </div>
 
-        {tuition_fee && (
-          <p className="mt-2 text-xs font-semibold text-gray-800">{tuition_fee}</p>
-        )}
-        {study_format_display && (
-          <p className="text-[11px] text-gray-400">{study_format_display}</p>
+        {(tuition_fee || study_format_display) && (
+          <div className="mt-3 pt-3 border-t border-dashed border-rule">
+            {tuition_fee && (
+              <p className="text-[13px] font-semibold text-ink">{tuition_fee}</p>
+            )}
+            {study_format_display && (
+              <p className="text-[11px] text-ink/45">{study_format_display}</p>
+            )}
+          </div>
         )}
 
         {discipline?.name && (
           <a
             href="#contact"
-            className="inline-block mt-3 text-accent font-semibold text-xs hover:underline"
+            className="inline-block mt-3 text-accent font-semibold text-xs hover:text-primary transition-colors"
           >
-            {discipline.name} →
+            Ask about {discipline.name}
           </a>
         )}
       </div>

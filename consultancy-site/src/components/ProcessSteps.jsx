@@ -17,6 +17,16 @@ export default function ProcessSteps() {
             </div>
           ))}
         </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="#contact"
+            className="inline-block bg-accent text-night font-bold px-8 py-3.5 rounded-full hover:bg-amber transition-colors"
+          >
+            Start at step one
+          </a>
+        </div>
+        
       </div>
     </section>
   );

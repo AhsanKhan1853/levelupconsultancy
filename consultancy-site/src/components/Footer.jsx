@@ -1,52 +1,102 @@
-import { FaInstagram, FaFacebookF } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+
+const ADMIN_WHATSAPP_NUMBER = "923119653438";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-8">
-        <div>
-          <h3 className="text-white font-bold text-xl">Level Up Consulting</h3>
-          <p className="mt-3 text-sm">Guiding students to top universities worldwide since 2004.</p>
+    <footer className="grain relative bg-bark text-cream/70">
+      {/* a soft hill matching the one under the hero, closing the page the
+          same way it opened */}
+      {/* <svg
+        className="w-full h-12 sm:h-16 text-primary"
+        viewBox="0 0 1440 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path d="M0 0c180 46 340 60 520 52s330-52 512-46c130 4 278 32 408 40V0Z" fill="currentColor" />
+      </svg> */}
 
-          <div className="flex gap-3 mt-4">
-            
-             <a href="https://instagram.com"
+      <div className="relative max-w-7xl mx-auto px-5 pt-14 pb-10 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="max-w-sm">
+          <div className="flex items-center gap-2.5">
+            <img src={logo} alt="" aria-hidden="true" className="h-9 w-auto" />
+            <span className="font-display text-xl font-semibold text-cream">
+              Level<span className="text-accent">Up</span> Consulting
+            </span>
+          </div>
+          <p className="mt-4 text-[0.95rem] leading-relaxed">
+            Guiding students to universities worldwide since 2004 — and picking
+            up the phone long after they've landed.
+          </p>
+
+          <div className="flex gap-3 mt-6">
+            <a
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-primary transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-cream/10 text-cream hover:bg-accent transition-colors"
             >
               <FaInstagram className="text-sm" />
             </a>
-            
-             <a href="https://facebook.com"
+            <a
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-primary transition-colors"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-cream/10 text-cream hover:bg-accent transition-colors"
             >
               <FaFacebookF className="text-sm" />
+            </a>
+            <a
+              href={`https://wa.me/${ADMIN_WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-cream/10 text-cream hover:bg-accent transition-colors"
+            >
+              <FaWhatsapp className="text-sm" />
             </a>
           </div>
         </div>
 
         <div>
-          <h4 className="text-white font-semibold mb-3">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#destinations">Destinations</a></li>
-            <li><a href="#process">Process</a></li>
+          <h3 className="font-display text-cream font-semibold text-lg">Explore</h3>
+          <ul className="mt-4 space-y-2.5 text-[0.95rem]">
+            <li><Link to="/services" className="hover:text-accent transition-colors">Services</Link></li>
+            <li><Link to="/destinations" className="hover:text-accent transition-colors">Destinations</Link></li>
+            <li><Link to="/opportunities" className="hover:text-accent transition-colors">Opportunities</Link></li>
+            <li><a href="#process" className="hover:text-accent transition-colors">How it works</a></li>
+            <li><a href="#SuccessStories" className="hover:text-accent transition-colors">Student stories</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 className="text-white font-semibold mb-3">Contact</h4>
-          <p className="text-sm">+92 300 0000000</p>
-          <p className="text-sm">info@globalreach.com</p>
+          <h3 className="font-display text-cream font-semibold text-lg">Get in touch</h3>
+          <ul className="mt-4 space-y-2.5 text-[0.95rem]">
+            <li>
+              <a href="tel:+923119653438" className="hover:text-accent transition-colors">
+                +92 311 9653438
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@levelupconsulting.pk" className="hover:text-accent transition-colors">
+                info@levelupconsulting.pk
+              </a>
+            </li>
+            <li className="pt-1">Topi, Khyber Pakhtunkhwa</li>
+            <li className="text-cream/50">Mon–Sat, 10am – 7pm</li>
+          </ul>
         </div>
       </div>
-      <p className="text-center text-xs mt-10 text-gray-500">
-        © {new Date().getFullYear()} GlobalReach Consultants. All rights reserved.
-      </p>
+
+      <div className="border-t border-cream/10">
+        <p className="max-w-7xl mx-auto px-5 py-6 text-center text-sm text-cream/45">
+          © {new Date().getFullYear()} LevelUp Consulting. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }

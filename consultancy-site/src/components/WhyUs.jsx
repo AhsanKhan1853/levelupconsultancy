@@ -18,70 +18,70 @@ function getLogo(slug) {
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-5">
-        <h2 className="text-3xl font-extrabold text-center">Why LevelUp Consulting</h2>
-        <p className="text-center text-gray-500 mt-2">
-          What sets us apart from the rest.
-        </p>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {whyUs.map((w) => (
-            <div
-              key={w.slug}
-              className="group relative bg-white rounded-2xl p-7 pt-10 text-center transition-all duration-300 hover:-translate-y-1"
-              style={{ boxShadow: "0 8px 16px 10px rgba(0, 0, 0, 0.06)" }}
-            >
-              <span className="absolute top-4 right-5 text-4xl font-extrabold text-primary/10 group-hover:text-accent/20 transition-colors duration-300">
-                {w.number}
-              </span>
-
-              <img
-                src={getLogo(w.slug)}
-                alt={`${w.title} icon`}
-                className="w-24 h-24 sm:w-28 sm:h-28 mx-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = logos["default"];
-                }}
-              />
-
-              <h3 className="mt-5 font-bold text-lg text-primary">{w.title}</h3>
-              <p className="mt-2 text-gray-600 text-sm leading-relaxed">{w.description}</p>
-            </div>
-          ))}
+    <section id="why-us" className="grain relative bg-oat py-20 sm:py-24 scroll-mt-24">
+      <div className="relative max-w-7xl mx-auto px-5">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+            Why families keep sending us their kids
+          </h2>
+          <p className="mt-4 text-lg text-ink/65">
+            Four things we do differently — and they're the reason most of our
+            students arrive through a cousin, a neighbour, or an older sibling
+            we helped first.
+          </p>
         </div>
 
-        {/* Stats, restyled to match the reasons above: same card, same blob-icon
-            language — the numbers (20+, 50K+, 60+, 800+) are kept front and center. */}
-        <div className="mt-16">
-          <h3 className="text-xl sm:text-2xl font-extrabold text-center text-primary">
-            LevelUp, by the Numbers
-          </h3>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-            {stats.map((s) => (
-              <div
-                key={s.slug}
-                className="group bg-white rounded-2xl p-7 pt-8 text-center transition-all duration-300 hover:-translate-y-1"
-                style={{ boxShadow: "0 8px 16px 10px rgba(0, 0, 0, 0.06)" }}
-              >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 mt-14">
+          {whyUs.map((w, i) => (
+            <div
+              key={w.slug}
+              className={`group bg-slate p-7 shadow-cozy hover:shadow-cozy-lg hover:-translate-y-1 transition-all duration-300 ${
+                i % 2 === 0 ? "rounded-pebble" : "rounded-pebble-alt"
+              }`}
+            >
+              <div className="w-[4.5rem] h-[4.5rem] well">
                 <img
-                  src={getLogo(s.slug)}
-                  alt={`${s.label} icon`}
-                  className="w-20 h-20 sm:w-24 sm:h-24 mx-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  src={getLogo(w.slug)}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = logos["default"];
                   }}
                 />
+              </div>
 
-                <p className="mt-4 text-3xl sm:text-4xl font-extrabold text-primary">
+              <h3 className="font-display mt-6 font-semibold text-xl text-primary leading-snug">
+                {w.title}
+              </h3>
+              <p className="mt-3 text-[0.95rem] text-ink/70 leading-relaxed">
+                {w.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats, kept as a single warm ribbon rather than four more cards —
+            they're a footnote to the reasons above, not a rival to them. */}
+        <div className="mt-16 bg-slate rounded-pebble px-6 sm:px-10 py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 divide-rule lg:divide-x">
+            {stats.map((s) => (
+              <div key={s.slug} className="flex flex-col items-center text-center px-2">
+                <img
+                  src={getLogo(s.slug)}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-14 h-14 object-contain"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = logos["default"];
+                  }}
+                />
+                <p className="font-display mt-3 text-4xl sm:text-5xl font-semibold text-primary leading-none">
                   {s.value}
                 </p>
-                <p className="mt-1 text-gray-600 text-sm font-medium uppercase tracking-wide">
-                  {s.label}
-                </p>
+                <p className="mt-2 text-sm text-ink/60">{s.label}</p>
               </div>
             ))}
           </div>

@@ -4,7 +4,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html, body, #root {
@@ -12,7 +12,7 @@ html, body, #root {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #171A18;
   overflow-x: hidden;
 }
 
@@ -21,9 +21,47 @@ html, body, #root {
 }
 
 body {
-  @apply font-sans text-gray-800;
+  @apply font-sans text-smoke antialiased;
+  font-size: 1.0625rem;
+  /* Quicksand runs light and wide, so body copy sits at 500 and headings
+     carry the weight instead. */
+  font-weight: 500;
+  line-height: 1.6;
 }
 
+/* Quicksand is geometric and wide — headings need negative tracking so they
+   don't sprawl across the measure. */
+.font-display {
+  letter-spacing: -0.02em;
+}
+
+@layer components {
+  /* Solid form fields: a step darker than whatever they sit on, so inputs
+     read as recessed without any shadow. */
+  .field {
+    @apply w-full bg-night border border-rule rounded-2xl px-4 py-3 text-smoke
+           placeholder:text-dim outline-none transition-colors
+           focus:border-accent;
+  }
+
+  select.field option {
+    background-color: #1F2321;
+    color: #E8EBE7;
+  }
+
+  /* Solid well behind an icon */
+  .well {
+    @apply bg-goldsoft rounded-full flex items-center justify-center;
+  }
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2.5px solid #cc8718;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* --- existing marquee behaviour, preserved --- */
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -43,4 +81,15 @@ body {
 }
 .animate-scroll-right:hover {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-scroll,
+  .animate-scroll-right {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -16,16 +16,31 @@ export default function HotStories() {
   if (!loading && stories.length === 0) return null;
 
   return (
-    <section className="py-20 bg-primary text-white">
-      <div className="max-w-7xl mx-auto px-5">
-        <h2 className="text-3xl font-extrabold text-center">Experiences That Speak for Us</h2>
+    <section
+      id="SuccessStories"
+      className="grain relative bg-primary text-cream py-20 sm:py-24 scroll-mt-24"
+    >
+      <div className="relative max-w-7xl mx-auto px-5">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-4xl sm:text-5xl font-semibold leading-tight">
+            They were nervous too
+          </h2>
+          <p className="mt-4 text-lg text-cream/75">
+            Notes from students who've already landed, settled in, and started
+            their first semester.
+          </p>
+        </div>
 
         {loading ? (
-          <p className="text-center mt-12 text-blue-200">Loading...</p>
+          <div className="grid md:grid-cols-3 gap-7 mt-14" aria-busy="true">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="h-52 bg-cream/10 rounded-pebble animate-pulse" />
+            ))}
+          </div>
         ) : (
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {stories.map((s) => (
-              <StoryCard key={s.id} story={s} />
+          <div className="grid md:grid-cols-3 gap-7 mt-14">
+            {stories.map((s, i) => (
+              <StoryCard key={s.id} story={s} index={i} />
             ))}
           </div>
         )}

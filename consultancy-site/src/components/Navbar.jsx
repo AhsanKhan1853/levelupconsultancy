@@ -21,7 +21,6 @@ export default function Navbar() {
 
     // Hash links scroll to a section on the home page
     if (location.pathname !== "/") {
-      // Navigate back to the home page, then let it scroll to the section
       navigate("/" + href);
     } else {
       const el = document.querySelector(href);
@@ -35,8 +34,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur shadow-sm z-50">
-      <div className="max-w-1x3 mx-auto relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+    <header className="fixed top-0 left-0 w-full bg-night border-b border-rule z-50">
+      <div className="max-w-7xl mx-auto relative flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         <a
           href="#home"
           onClick={(e) => {
@@ -46,12 +45,12 @@ export default function Navbar() {
           className="flex items-center gap-2 whitespace-nowrap"
         >
           <img src={logo} alt="LevelUp Consulting logo" className="h-8 sm:h-10 w-auto" />
-          <span className="text-xl sm:text-2xl font-extrabold text-primary">
+          <span className="font-display text-xl sm:text-2xl font-bold text-smoke">
             Level<span className="text-accent">Up</span> Consulting
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-medium">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-semibold text-ash">
           {navLinks.map((link, i) => (
             <span key={link.label} className="flex items-center gap-1 xl:gap-8">
               <a
@@ -65,42 +64,45 @@ export default function Navbar() {
                 {link.label}
               </a>
               {i < navLinks.length - 1 && (
-                <span className="inline-block text-accent text-lg select-none" style={{ transform: "rotate(15deg)" }}>
-                  \
+                <span
+                  className="inline-block text-accent text-lg select-none"
+                  style={{ transform: "rotate(0deg)" }}
+                  aria-hidden="true"
+                >
+                  |
                 </span>
               )}
             </span>
           ))}
         </nav>
 
-        {/* <a>
-          Free Consultation
-        </a> */}
-
         <button
-          className="lg:hidden text-2xl shrink-0"
+          className="lg:hidden text-2xl shrink-0 text-smoke"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <HiX /> : <HiMenu />}
         </button>
 
-        <div className="hidden lg:flex absolute right-6 lg:right-8 top-full mt-0 gap-3 bg-white/95 backdrop-blur px-3 py-1.5 rounded-b-lg shadow-sm">
-          
-          <a  href="https://instagram.com"
+        {/* socials sit in a small panel hanging below the bar, right-aligned */}
+        <div className="hidden lg:flex absolute right-6 lg:right-8 top-full mt-0 gap-3 bg-night border border-t-0 border-rule px-3 py-1.5 rounded-b-lg">
+          <a
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 text-primary hover:bg-primary hover:text-white transition-colors"
+            className="w-7 h-7 flex items-center justify-center rounded-full bg-slate text-smoke hover:bg-accent hover:text-night transition-colors"
           >
             <FaInstagram className="text-xs" />
           </a>
-          
-           <a href="https://facebook.com"
+
+          <a
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 text-primary hover:bg-primary hover:text-white transition-colors"
+            className="w-7 h-7 flex items-center justify-center rounded-full bg-slate text-smoke hover:bg-accent hover:text-night transition-colors"
           >
             <FaFacebookF className="text-xs" />
           </a>
@@ -108,7 +110,7 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-white border-t px-4 sm:px-6 py-4 flex flex-col gap-4">
+        <div className="lg:hidden bg-night border-t border-rule px-4 sm:px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -117,31 +119,29 @@ export default function Navbar() {
                 e.preventDefault();
                 goToSection(link.href);
               }}
+              className="text-ash hover:text-accent transition-colors"
             >
               {link.label}
             </a>
           ))}
 
-          {/* <a>
-            Free Consultation
-          </a> */}
-
-          <div className="flex gap-3 pt-2 border-t">
-            
-             <a href="https://instagram.com"
+          <div className="flex gap-3 pt-3 border-t border-rule">
+            <a
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-primary hover:bg-primary hover:text-white transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-slate text-smoke hover:bg-accent hover:text-night transition-colors"
             >
               <FaInstagram className="text-sm" />
             </a>
-            
-             <a href="https://facebook.com"
+
+            <a
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-primary hover:bg-primary hover:text-white transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-slate text-smoke hover:bg-accent hover:text-night transition-colors"
             >
               <FaFacebookF className="text-sm" />
             </a>

@@ -41,68 +41,95 @@ export default function FeedbackForm() {
   };
 
   return (
-    <section id="feedback" className="py-20 bg-gray-50">
+    <section id="feedback" className="bg-cream py-20 sm:py-24 scroll-mt-24">
       <div className="max-w-2xl mx-auto px-5">
-        <h2 className="text-3xl font-extrabold text-center">Share Your Feedback</h2>
-        <p className="text-center text-gray-500 mt-2">Tell us about your experience with us.</p>
+        <div className="bg-slate rounded-pebble shadow-cozy p-8 sm:p-11">
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink leading-tight">
+            How did we do?
+          </h2>
+          <p className="mt-3 text-ink/65">
+            If we got something right, tell us. If we didn't, tell us that too —
+            it goes straight to the people who can fix it.
+          </p>
 
-        <form onSubmit={handleSubmit} className="grid gap-4 mt-10">
-          <input
-            name="name"
-            required
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            className="border rounded-lg p-3"
-          />
-          <input
-            name="email"
-            type="email"
-            required
-            placeholder="Email Address"
-            value={form.email}
-            onChange={handleChange}
-            className="border rounded-lg p-3"
-          />
+          <form onSubmit={handleSubmit} className="grid gap-5 mt-9">
+            <label className="grid gap-1.5">
+              <span className="text-sm font-medium text-ink/70">Your name</span>
+              <input
+                name="name"
+                required
+                placeholder="Ayesha Khan"
+                value={form.name}
+                onChange={handleChange}
+                className="field"
+              />
+            </label>
 
-          <div>
-            <label className="text-sm text-gray-600">Rating</label>
-            <div className="flex gap-2 mt-1">
-              {[1, 2, 3, 4, 5].map((r) => (
-                <button
-                  type="button"
-                  key={r}
-                  onClick={() => setForm({ ...form, rating: r })}
-                  className={`text-2xl ${r <= form.rating ? "text-accent" : "text-gray-300"}`}
-                >
-                  ★
-                </button>
-              ))}
-            </div>
-          </div>
+            <label className="grid gap-1.5">
+              <span className="text-sm font-medium text-ink/70">Email</span>
+              <input
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                value={form.email}
+                onChange={handleChange}
+                className="field"
+              />
+            </label>
 
-          <textarea
-            name="message"
-            required
-            rows={4}
-            placeholder="Your feedback..."
-            value={form.message}
-            onChange={handleChange}
-            className="border rounded-lg p-3"
-          />
+            <fieldset className="border-0 p-0 m-0">
+              <legend className="text-sm font-medium text-ink/70 mb-1.5">Rating</legend>
+              <div className="flex gap-1.5">
+                {[1, 2, 3, 4, 5].map((r) => (
+                  <button
+                    type="button"
+                    key={r}
+                    onClick={() => setForm({ ...form, rating: r })}
+                    aria-label={`${r} out of 5`}
+                    aria-pressed={r === form.rating}
+                    className={`text-3xl leading-none transition-transform hover:scale-110 ${
+                      r <= form.rating ? "text-accent" : "text-rule"
+                    }`}
+                  >
+                    ★
+                  </button>
+                ))}
+              </div>
+            </fieldset>
 
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
-          >
-            {status === "sending" ? "Sending..." : "Submit & Continue on WhatsApp"}
-          </button>
+            <label className="grid gap-1.5">
+              <span className="text-sm font-medium text-ink/70">What happened?</span>
+              <textarea
+                name="message"
+                required
+                rows={4}
+                placeholder="Tell us about your experience with us…"
+                value={form.message}
+                onChange={handleChange}
+                className="field resize-y"
+              />
+            </label>
 
-          {status === "error" && (
-            <p className="text-red-600 text-sm text-center">Something went wrong. Please try again.</p>
-          )}
-        </form>
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="bg-primary text-cream py-3.5 rounded-full font-semibold shadow-cozy hover:bg-accent hover:shadow-lamp transition-all duration-300 disabled:opacity-50 disabled:hover:bg-primary"
+            >
+              {status === "sending" ? "Sending…" : "Send feedback on WhatsApp"}
+            </button>
+
+            <p className="text-center text-sm text-ink/50 -mt-1">
+              We save a copy and open WhatsApp so you can keep talking to us there.
+            </p>
+
+            {status === "error" && (
+              <p className="text-center text-sm font-medium text-[#A13A1E]">
+                That didn't send. Check your connection and try again.
+              </p>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );

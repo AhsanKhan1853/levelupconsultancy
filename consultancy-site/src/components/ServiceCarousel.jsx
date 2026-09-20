@@ -21,8 +21,8 @@ function ServiceCarouselCard({ s, cardKey }) {
   return (
     <div
       key={cardKey}
-      className="shrink-0 w-80 bg-white rounded-2xl px-6 py-6 hover:shadow-md transition"
-      style={{ boxShadow: "0 4px 10px rgba(0,0,0,0.05)" }}
+      className="shrink-0 w-80 bg-slate rounded-2xl px-6 py-6 hover:shadow-[0_4px_14px_rgba(16,19,18,0.55)] transition"
+      style={{ boxShadow: "0 4px 10px rgba(16,19,18,0.4)" }}
     >
       <img
         src={getLogo(s.slug)}
@@ -34,8 +34,8 @@ function ServiceCarouselCard({ s, cardKey }) {
           e.currentTarget.src = logos["default"];
         }}
       />
-      <h3 className="font-bold text-primary text-base mt-4">{s.title}</h3>
-      <p className="text-sm text-gray-500 mt-2 leading-relaxed">{s.desc}</p>
+      <h3 className="font-bold text-smoke text-base mt-4">{s.title}</h3>
+      <p className="text-sm text-ash mt-2 leading-relaxed">{s.desc}</p>
     </div>
   );
 }
@@ -44,8 +44,8 @@ export default function ServiceCarousel() {
   const { ref, containerProps } = useAutoScroll({ speed: 0.5 });
 
   return (
-    <section className="py-14 bg-gray-50">
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-primary px-5">
+    <section className="py-14 bg-coal">
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-smoke px-5">
         Our Complete Student Services
       </h2>
 
