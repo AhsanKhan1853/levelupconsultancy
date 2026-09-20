@@ -28,37 +28,60 @@ export default function Hero() {
     >
       <style>{`
         @keyframes flipChar {
-          0% {
-            transform: rotateX(90deg);
-            opacity: 0;
-          }
-          60% {
-            transform: rotateX(-10deg);
-            opacity: 1;
-          }
-          100% {
-            transform: rotateX(0deg);
-            opacity: 1;
-          }
+          0% { transform: rotateX(90deg); opacity: 0; }
+          60% { transform: rotateX(-10deg); opacity: 1; }
+          100% { transform: rotateX(0deg); opacity: 1; }
         }
         .hero-char {
           display: inline-block;
           transform-origin: 50% 50%;
           animation: flipChar 0.5s ease-out both;
         }
+
+        @keyframes blobDrift1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(6%, 8%) scale(1.1); }
+          66% { transform: translate(-4%, 4%) scale(0.95); }
+        }
+        @keyframes blobDrift2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(-8%, -5%) scale(1.05); }
+          66% { transform: translate(5%, -8%) scale(1.15); }
+        }
+        @keyframes blobDrift3 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(4%, -10%) scale(1.1); }
+        }
+        .blob-1 { animation: blobDrift1 18s ease-in-out infinite; }
+        .blob-2 { animation: blobDrift2 22s ease-in-out infinite; }
+        .blob-3 { animation: blobDrift3 26s ease-in-out infinite; }
+
         @media (prefers-reduced-motion: reduce) {
           .hero-char { animation: none !important; opacity: 1; transform: none; }
+          .blob-1, .blob-2, .blob-3 { animation: none !important; }
         }
       `}</style>
+
+      {/* Mobile-only: image as full section background */}
+      <div className="absolute inset-0 lg:hidden">
+        <img
+          src={heroBg}
+          alt="Counselors meeting students at the LevelUp Consulting office"
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-night/70" />
+      </div>
+
+      {/* Animated background blobs (all sizes) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="blob-1 absolute -top-20 -left-20 w-[28rem] h-[28rem] rounded-full bg-accent/25 blur-3xl" />
+        <div className="blob-2 absolute top-1/3 -right-24 w-[32rem] h-[32rem] rounded-full bg-emerald-500/20 blur-3xl" />
+        <div className="blob-3 absolute -bottom-32 left-1/4 w-[26rem] h-[26rem] rounded-full bg-amber-400/15 blur-3xl" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-5 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         {/* ---------- Left: the promise ---------- */}
         <div className="max-w-[34rem]">
-          {/* <p className="flex items-center gap-2.5 text-accent text-[0.95rem] font-semibold">
-            <span className="w-8 h-0.5 bg-accent" aria-hidden="true" />
-            Based in Pakistan, sending students everywhere
-          </p> */}
-
           <h1 className="font-display mt-5 text-[2.6rem] sm:text-6xl font-bold leading-[1.08] text-smoke">
             Your trusted partner for{" "}
             <span className="text-accent inline-block" style={{ perspective: "400px" }}>
@@ -94,18 +117,11 @@ export default function Hero() {
               See how we work
             </a>
           </div>
-
-          {/* <p className="mt-8 text-sm text-dim">
-            No charge for the first sitting. Come with questions, leave with a plan.
-          </p> */}
         </div>
 
-        {/* ---------- Right: an arched window onto the office ---------- */}
+        {/* ---------- Right: an arched window onto the office (desktop only) ---------- */}
         <div className="relative hidden lg:block">
           <div className="relative">
-            {/* a solid panel behind the photo — offset toward the bottom-right
-                and a touch smaller, so it reads as a backing the photo sits
-                on top of, rather than a frame the photo is confined inside */}
             <div
               aria-hidden="true"
               className="absolute top-3.5 left-3.5 -bottom-1.5 -right-1.5 rounded-arch bg-slate"
@@ -119,7 +135,6 @@ export default function Hero() {
               />
             </div>
 
-            {/* years badge, sitting flat on the corner of the frame */}
             <div className="absolute -bottom-6 -left-6 bg-accent rounded-pebble px-7 py-5">
               <p className="font-display text-5xl font-bold text-night leading-none">20+</p>
               <p className="mt-1.5 text-sm text-night font-semibold max-w-[9rem] leading-snug">

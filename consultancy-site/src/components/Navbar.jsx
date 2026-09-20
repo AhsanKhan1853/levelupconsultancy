@@ -4,6 +4,10 @@ import { navLinks } from "../Data/siteData";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import { FaWhatsapp } from "react-icons/fa";
+
+const WHATSAPP_NUMBER = "923119653438";
+const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -75,20 +79,41 @@ export default function Navbar() {
             </span>
           ))}
         </nav>
-
-        <button
-          className="lg:hidden text-2xl shrink-0 text-smoke"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-          aria-expanded={open}
+          <a     
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden lg:flex items-center gap-2 bg-emerald-500 text-night font-bold px-5 py-2.5 rounded-full hover:bg-emerald-400 transition-colors"
         >
-          {open ? <HiX /> : <HiMenu />}
-        </button>
+          <FaWhatsapp className="text-lg" />
+          WhatsApp Us
+        </a>
+
+      <div className="flex items-center gap-2 lg:hidden">
+  <a
+    href={whatsappLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp Us"
+    className="w-9 h-9 flex items-center justify-center rounded-full bg-emerald-500 text-night hover:bg-emerald-400 transition-colors"
+  >
+    <FaWhatsapp className="text-base" />
+  </a>
+
+  <button
+    className="text-2xl shrink-0 text-smoke"
+    onClick={() => setOpen(!open)}
+    aria-label="Toggle menu"
+    aria-expanded={open}
+  >
+    {open ? <HiX /> : <HiMenu />}
+  </button>
+</div>
 
         {/* socials sit in a small panel hanging below the bar, right-aligned */}
         <div className="hidden lg:flex absolute right-6 lg:right-8 top-full mt-0 gap-3 bg-night border border-t-0 border-rule px-3 py-1.5 rounded-b-lg">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/levelupconsultingpk?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -98,7 +123,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/1EbNUChDgK/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -112,6 +137,7 @@ export default function Navbar() {
       {open && (
         <div className="lg:hidden bg-night border-t border-rule px-4 sm:px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
+
             <a
               key={link.label}
               href={link.href}
@@ -123,11 +149,21 @@ export default function Navbar() {
             >
               {link.label}
             </a>
-          ))}
 
+            
+          ))}
+           <a        
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 bg-emerald-500 text-night font-bold px-5 py-2.5 rounded-full hover:bg-emerald-400 transition-colors"
+        >
+          <FaWhatsapp className="text-lg" />
+          WhatsApp Us
+        </a>
           <div className="flex gap-3 pt-3 border-t border-rule">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/levelupconsultingpk?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -137,7 +173,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1EbNUChDgK/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"

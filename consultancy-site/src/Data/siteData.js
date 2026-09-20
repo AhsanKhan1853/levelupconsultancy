@@ -6,7 +6,6 @@ export const navLinks = [
   { label: "Opportunities", href: "#opportunities" },
   { label: "Stories", href: "#SuccessStories" },
   { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export const stats = [

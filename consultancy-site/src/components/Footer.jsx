@@ -33,7 +33,7 @@ export default function Footer() {
 
           <div className="flex gap-3 mt-6">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/levelupconsultingpk?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -42,7 +42,7 @@ export default function Footer() {
               <FaInstagram className="text-sm" />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/share/1EbNUChDgK/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -82,11 +82,11 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="mailto:info@levelupconsulting.pk" className="hover:text-accent transition-colors">
-                info@levelupconsulting.pk
+              <a href="mailto:levelupconsultingpk@gmail.com" className="hover:text-accent transition-colors">
+                levelupconsultingpk@gmail.com
               </a>
             </li>
-            <li className="pt-1">Topi, Khyber Pakhtunkhwa</li>
+            <li className="pt-1">Chatta Bakhtawar, Islamabad</li>
             <li className="text-cream/50">Mon–Sat, 10am – 7pm</li>
           </ul>
         </div>
