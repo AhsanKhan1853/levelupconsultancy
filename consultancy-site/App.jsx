@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Stats from "./components/Stats";
 import WhyUs from "./components/WhyUs";
 import Services from "./components/Services";
 import Destinations from "./components/Destinations";
@@ -35,7 +34,7 @@ function LandingPage() {
     <div>
       <Navbar />
       <Hero />
-      <OpportunitySearch /> 
+      <OpportunitySearch />
       <WhyUs />
       <Services />
       <HotOpportunities />

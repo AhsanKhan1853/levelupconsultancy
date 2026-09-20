@@ -37,7 +37,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <OfficeGallery />
       <CTABanner />
       <Footer />
     </div>

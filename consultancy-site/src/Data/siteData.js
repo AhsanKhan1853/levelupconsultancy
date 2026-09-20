@@ -92,12 +92,12 @@ export const services = [
 ];
 
 export const studentServices = [
-  { title: "University & Program Selection", desc: "Personalized shortlisting based on your goals, budget, and grades." },
-  { title: "Application & Admission Processing", desc: "End-to-end help applying and securing your admission offer." },
-  { title: "Document & Visa File Preparation", desc: "Complete document review and visa file preparation, done right." },
-  { title: "Student Visa Services", desc: "Guidance through every step of your student visa application." },
-  { title: "24/7 Online Consultation", desc: "Get answers anytime — our advisors are just a message away." },
-  { title: "Travel & Pre-Departure Guidance", desc: "Everything you need to know before you fly." },
+  { title: "University & Program Selection", slug: "country-university-selection", desc: "Personalized shortlisting based on your goals, budget, and grades." },
+  { title: "Application & Admission Processing", slug: "application-assistance", desc: "End-to-end help applying and securing your admission offer." },
+  { title: "Document & Visa File Preparation", slug: "document-visa-file-preparation", desc: "Complete document review and visa file preparation, done right." },
+  { title: "Student Visa Services", slug: "tourists-visa-services", desc: "Guidance through every step of your student visa application." },
+  { title: "24/7 Online Consultation", slug: "online-consultation", desc: "Get answers anytime — our advisors are just a message away." },
+  { title: "Travel & Pre-Departure Guidance", slug: "travel-pre-departure-guidance", desc: "Everything you need to know before you fly." },
 ];
 
 export const scholarships = [
@@ -187,4 +187,37 @@ export const testimonials = [
   { name: "Ahmed Raza", country: "Studying in UK", quote: "The team guided me through every step, from choosing a university to landing in the UK." },
   { name: "Sana Malik", country: "Studying in Canada", quote: "Honest advice and quick responses made my visa process stress-free." },
   { name: "Bilal Khan", country: "Studying in Australia", quote: "I couldn't have picked the right program without their counseling." },
+];
+
+
+
+export const whyUs = [
+  {
+    slug: "experienced-counselors",
+    number: "01",
+    title: "Experienced Counselors",
+    description:
+      "Two decades of combined experience means your file is handled by people who've seen every scenario, not first-time advisors guessing along with you.",
+  },
+  {
+    slug: "personalized-roadmap",
+    number: "02",
+    title: "Personalized Roadmap",
+    description:
+      "No copy-paste plans. We map your country, university, and timeline choices to your grades, budget, and career goals from day one.",
+  },
+  {
+    slug: "proven-visa-success",
+    number: "03",
+    title: "Proven Visa Success",
+    description:
+      "Every file is reviewed line by line before submission, and we coach you through the interview, keeping our rejection rate far below the industry average.",
+  },
+  {
+    slug: "end-to-end-support",
+    number: "04",
+    title: "End-to-End Support",
+    description:
+      "From your first consultation to the day you land abroad, one team stays with you — no handing you off between departments.",
+  },
 ];
