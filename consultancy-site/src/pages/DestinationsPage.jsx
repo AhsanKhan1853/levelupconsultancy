@@ -5,7 +5,7 @@ import CTABanner from "../components/CTABanner";
 import destinationsHero from "../assets/destinations/destinations-hero.png";
 
 import mbbsImg from "../assets/scholarships/mbbs.png";
-import bdsImg from "../assets/scholarships/bds.png ";
+import bdsImg from "../assets/scholarships/bds.png";
 import bachelorsImg from "../assets/scholarships/bachelors.png";
 import mastersImg from "../assets/scholarships/masters.jpg";
 import phdImg from "../assets/scholarships/phd.jpg";
