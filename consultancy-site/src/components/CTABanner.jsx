@@ -14,7 +14,7 @@ const INTEREST_OPTIONS = [
 ];
 
 export default function CTABanner() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "" });
+  const [form, setForm] = useState({ name: "", interest: "" });
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -22,8 +22,6 @@ export default function CTABanner() {
     return (
       `New Consultation Request\n\n` +
       `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone}\n` +
       `Interested In: ${form.interest}`
     );
   };
@@ -35,7 +33,7 @@ export default function CTABanner() {
     const waUrl = `https://wa.me/${ADMIN_WHATSAPP_NUMBER}?text=${message}`;
     window.open(waUrl, "_blank");
 
-    setForm({ name: "", email: "", phone: "", interest: "" });
+    setForm({ name: "", interest: "" });
   };
 
   return (
@@ -82,33 +80,8 @@ export default function CTABanner() {
             <input
               name="name"
               required
-              placeholder="Ayesha Khan"
+              placeholder="Muhammad Ali"
               value={form.name}
-              onChange={handleChange}
-              className="field"
-            />
-          </label>
-
-          <label className="grid gap-1.5">
-            <span className="text-sm font-medium text-ink/70">Email</span>
-            <input
-              name="email"
-              type="email"
-              required
-              placeholder="you@example.com"
-              value={form.email}
-              onChange={handleChange}
-              className="field"
-            />
-          </label>
-
-          <label className="grid gap-1.5">
-            <span className="text-sm font-medium text-ink/70">Phone</span>
-            <input
-              name="phone"
-              required
-              placeholder="0300 0000000"
-              value={form.phone}
               onChange={handleChange}
               className="field"
             />

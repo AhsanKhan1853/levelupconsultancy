@@ -2,7 +2,7 @@ import { destinationPrograms, countries } from "../Data/siteData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
-import destinationsHero from "../assets/destinations/destinations-hero.png";
+import destinationsHero from "../assets/destinations/destinations-hero.webp";
 
 import mbbsImg from "../assets/scholarships/mbbs.webp";
 import bdsImg from "../assets/scholarships/bds.webp";
