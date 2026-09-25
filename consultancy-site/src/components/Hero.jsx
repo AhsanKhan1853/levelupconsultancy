@@ -7,7 +7,10 @@ const rotatingWords = [
   "Scholarships",
   "Test Preparation",
 ];
-
+const WHATSAPP_NUMBER = "923119653438";
+const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hi, I'd like to book a free consultation."
+)}`;
 export default function Hero() {
   const [index, setIndex] = useState(0);
 
@@ -104,12 +107,14 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="bg-accent text-night font-bold px-7 py-3.5 rounded-full hover:bg-amber transition-colors"
-            >
-              Book a free consultation
-            </a>
+    <a      
+    href={whatsappLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-accent text-night font-bold px-7 py-3.5 rounded-full hover:bg-amber transition-colors"
+    >
+  Book a free consultation
+</a>
             <a
               href="#why-us"
               className="font-bold text-smoke border-2 border-rule px-7 py-3 rounded-full hover:border-accent hover:text-accent transition-colors"

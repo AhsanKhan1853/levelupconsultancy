@@ -86,7 +86,7 @@ export default function Footer() {
                 levelupconsultingpk@gmail.com
               </a>
             </li>
-            <li className="pt-1">Chatta Bakhtawar, Islamabad</li>
+            <li className="pt-1">Near Gerry's FedEx Office, Islamabad</li>
             <li className="text-cream/50">Mon–Sat, 10am – 7pm</li>
           </ul>
         </div>

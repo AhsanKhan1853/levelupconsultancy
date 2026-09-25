@@ -138,37 +138,37 @@ export const destinationPrograms = [
     degree: "MBBS",
     image: "mbbs",
     desc: "Study medicine abroad with recognized degrees and strong clinical training.",
-    countries: ["Russia", "Kyrgyzstan", "Kazakhstan", "Georgia"],
+    countries: ["China", "Russia","Kyrgyzstan", "Kazakhstan", "Georgia","Uzbekistan","Bosnia","Armenia"],
   },
   {
     degree: "BDS",
     image: "bds",
     desc: "Dental programs with hands-on training and internationally valid qualifications.",
-    countries: ["Russia", "Kyrgyzstan", "Georgia"],
+    countries: ["China", "Russia","Georgia", "Kyrgyzstan","Uzbekistan","Kazakhstan","Bosnia","Armenia"],
   },
   {
     degree: "Any Bachelor's Program",
     image: "bachelors",
     desc: "Undergraduate study across a wide range of disciplines and destinations.",
-    countries: ["UK", "Canada", "Germany", "Poland", "Australia"],
+    countries: ["China", "UK", "Canada", "Germany",],
   },
   {
     degree: "Any Master's Program",
     image: "masters",
     desc: "Postgraduate degrees with scholarship and assistantship opportunities.",
-    countries: ["UK", "Canada", "Germany", "Ireland", "Australia"],
+    countries: ["China", "UK", "Canada"],
   },
   {
     degree: "PhD Research Programs",
     image: "phd",
     desc: "Funded research positions at leading universities.",
-    countries: ["Germany", "Canada", "UK"],
+    countries: ["China", "Germany", "Canada", "UK"],
   },
   {
     degree: "Diploma Programs",
     image: "diploma",
     desc: "Career-focused diploma pathways available across many countries.",
-    countries: ["Germany", "Poland", "Canada"],
+    countries: ["China", "Canada", "UK"],
   },
 ];
 
