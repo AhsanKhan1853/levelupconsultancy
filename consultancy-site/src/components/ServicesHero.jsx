@@ -1,4 +1,4 @@
-import servicesHero from "../assets/services-hero.png";
+import servicesHero from "../assets/services-hero.webp";
 
 export default function ServicesHero() {
   return (

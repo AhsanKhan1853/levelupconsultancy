@@ -1,10 +1,10 @@
 import { whyUs, stats } from "../Data/siteData";
 
-const logoModules = import.meta.glob("../assets/why-us/*.png", { eager: true });
+const logoModules = import.meta.glob("../assets/why-us/*.webp", { eager: true });
 
 const logos = Object.fromEntries(
   Object.entries(logoModules).map(([path, mod]) => {
-    const name = path.split("/").pop().replace(".png", "");
+    const name = path.split("/").pop().replace(".webp", "");
     return [name, mod.default];
   })
 );
@@ -41,18 +41,18 @@ export default function WhyUs() {
                 shadow-lg hover:border-accent/60 hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(245,166,35,0.35)]
                 transition-all duration-300"
             >
-              <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+              <div className="relative w-16 h-16 rounded-xl bg-goldsoft ring-1 ring-accent/30 flex items-center justify-center group-hover:ring-accent/60 transition-all duration-300">
                 <img
-                  src={getLogo(w.slug)}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = logos["default"];
-                  }}
-                />
-              </div>
+                src={getLogo(w.slug)}
+                alt=""
+                aria-hidden="true"
+                className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = logos["default"];
+                }}
+              />
+            </div>      
 
               <h3 className="font-display mt-6 font-semibold text-lg text-smoke leading-snug">
                 {w.title}
@@ -73,7 +73,7 @@ export default function WhyUs() {
                   src={getLogo(s.slug)}
                   alt=""
                   aria-hidden="true"
-                  className="w-12 h-12 object-contain brightness-0 invert opacity-90"
+                  className="w-14 h-14"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = logos["default"];

@@ -2,13 +2,13 @@ import { studentServices } from "../Data/siteData";
 import { useAutoScroll } from "../hooks/useAutoScroll";
 
 // Eagerly import every PNG in assets/services so we can look one up by slug
-// at runtime, falling back to assets/services/default.png when missing.
+// at runtime, falling back to assets/services/default.webp when missing.
 // Same pattern used on the Services page (see components/Services.jsx).
-const logoModules = import.meta.glob("../assets/services/*.png", { eager: true });
+const logoModules = import.meta.glob("../assets/services/*.webp", { eager: true });
 
 const logos = Object.fromEntries(
   Object.entries(logoModules).map(([path, mod]) => {
-    const name = path.split("/").pop().replace(".png", "");
+    const name = path.split("/").pop().replace(".webp", "");
     return [name, mod.default];
   })
 );

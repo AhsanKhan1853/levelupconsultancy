@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { services } from "../Data/siteData";
 import { useAutoScroll } from "../hooks/useAutoScroll";
 
-const logoModules = import.meta.glob("../assets/services/*.png", { eager: true });
+const logoModules = import.meta.glob("../assets/services/*.webp", { eager: true });
 const bgModules = import.meta.glob("../assets/services/bg/*.webp", { eager: true });
 
 const logos = Object.fromEntries(
   Object.entries(logoModules).map(([path, mod]) => {
-    const name = path.split("/").pop().replace(".png", "");
+    const name = path.split("/").pop().replace(".webp", "");
     return [name, mod.default];
   })
 );
@@ -48,12 +48,12 @@ function ServiceCard({ s }) {
       <div className="absolute inset-0 bg-gradient-to-t from-night/95 via-night/70 to-night/30" />
 
       <div className="relative h-full flex flex-col justify-end p-6">
-        <div className="w-14 h-14 rounded-xl bg-accent/15 backdrop-blur flex items-center justify-center mb-4 group-hover:bg-accent/25 transition-colors duration-300">
+        <div className="relative w-14 h-14 rounded-xl bg-goldsoft ring-1 ring-accent/30 flex items-center justify-center mb-4 shadow-[0_4px_14px_-4px_rgba(204,135,24,0.35)] group-hover:ring-accent/60 group-hover:shadow-[0_4px_18px_-4px_rgba(204,135,24,0.55)] transition-all duration-300">
           <img
             src={getLogo(s.slug)}
             alt=""
             aria-hidden="true"
-            className="w-8 h-8 object-contain"
+            className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110"
             draggable={false}
             onError={(e) => {
               e.currentTarget.onerror = null;

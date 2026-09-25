@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import heroBg from "../assets/hero-bg.png";
+import heroBg from "../assets/hero-bg.webp";
 
 const rotatingWords = [
   "Studying Abroad",

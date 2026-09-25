@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { navLinks } from "../Data/siteData";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WHATSAPP_NUMBER = "923119653438";
