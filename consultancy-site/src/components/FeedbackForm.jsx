@@ -1,11 +1,25 @@
 import { useState } from "react";
-import { submitFeedback } from "../api/feedback";
 
 const ADMIN_WHATSAPP_NUMBER = "923119653438"; // <-- replace with real number, country code, no + or 00
+const FEEDBACK_STORAGE_KEY = "levelup_feedback_log";
+
+// No backend to POST to, so we keep a local record (visible only on this
+// device, in this browser) before handing the message off to WhatsApp —
+// that way nothing is lost even if the WhatsApp redirect gets closed early.
+function saveFeedbackLocally(entry) {
+  try {
+    const existing = JSON.parse(localStorage.getItem(FEEDBACK_STORAGE_KEY) || "[]");
+    existing.push({ ...entry, submittedAt: new Date().toISOString() });
+    localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(existing));
+  } catch {
+    // localStorage can fail (private browsing, storage full, etc.) — feedback
+    // still goes out over WhatsApp either way, so this is a soft failure.
+  }
+}
 
 export default function FeedbackForm() {
   const [form, setForm] = useState({ name: "", email: "", rating: 5, message: "" });
-  const [status, setStatus] = useState(null); // null | "sending" | "error"
+  const [status, setStatus] = useState(null); // null | "sending"
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -19,17 +33,11 @@ export default function FeedbackForm() {
     );
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setStatus("sending");
 
-    try {
-      // Still saved in Django admin under Feedback for records
-      await submitFeedback(form);
-    } catch {
-      setStatus("error");
-      return;
-    }
+    saveFeedbackLocally(form);
 
     // Open WhatsApp pre-filled with the feedback, addressed to admin
     const message = encodeURIComponent(buildWhatsAppMessage());
@@ -122,12 +130,6 @@ export default function FeedbackForm() {
             <p className="text-center text-sm text-ink/50 -mt-1">
               We save a copy and open WhatsApp so you can keep talking to us there.
             </p>
-
-            {status === "error" && (
-              <p className="text-center text-sm font-medium text-[#A13A1E]">
-                That didn't send. Check your connection and try again.
-              </p>
-            )}
           </form>
         </div>
       </div>

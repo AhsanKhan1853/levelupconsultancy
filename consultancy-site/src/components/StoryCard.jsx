@@ -1,4 +1,6 @@
-export default function StoryCard({ index = 0 }) {
+export default function StoryCard({ story, index = 0 }) {
+  const { name, initials, country, university, program, quote } = story;
+
   return (
     <div
       className={`group relative bg-slate/60 backdrop-blur border border-rule border-dashed p-7 pt-9
@@ -12,27 +14,21 @@ export default function StoryCard({ index = 0 }) {
         &ldquo;
       </span>
 
-      <div className="relative flex flex-col items-center text-center py-6">
-        <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-          <span className="text-2xl">✦</span>
-        </div>
-
-        <p className="font-display text-lg font-semibold text-smoke">
-          A student's story is on its way
-        </p>
-        <p className="mt-2 text-sm text-ash leading-relaxed max-w-[16rem]">
-          We're gathering real experiences from students we've placed abroad.
-          Check back soon.
-        </p>
+      <div className="relative">
+        <p className="text-sm text-ash leading-relaxed min-h-[5.5rem]">{quote}</p>
       </div>
 
-      <div className="flex items-center gap-3.5 mt-2 pt-5 border-t border-dashed border-rule">
-        <div className="w-12 h-12 rounded-full bg-slate border-2 border-dashed border-rule flex items-center justify-center">
-          <span className="text-ash text-lg">?</span>
+      <div className="flex items-center gap-3.5 mt-6 pt-5 border-t border-dashed border-rule">
+        <div className="w-12 h-12 rounded-full bg-accent/10 border-2 border-dashed border-rule flex items-center justify-center shrink-0">
+          <span className="text-accent font-display font-semibold text-sm">{initials}</span>
         </div>
-        <div>
-          <p className="font-semibold text-ash leading-tight">Coming soon</p>
-          <p className="text-sm text-ash/60 leading-tight mt-0.5">Studying somewhere new</p>
+        <div className="min-w-0">
+          <p className="font-semibold text-smoke leading-tight truncate">{name}</p>
+          <p className="text-sm text-ash/70 leading-tight mt-0.5 truncate">
+            {program ? `${program} · ` : ""}
+            {university ? `${university}, ` : ""}
+            {country}
+          </p>
         </div>
       </div>
     </div>

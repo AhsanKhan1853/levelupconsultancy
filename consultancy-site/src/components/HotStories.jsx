@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-import { getHotStories } from "../api/stories";
+import { successStories } from "../Data/reviewsData";
 import StoryCard from "./StoryCard";
 
 export default function HotStories() {
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const stories = successStories.filter((s) => s.isHot);
 
-  useEffect(() => {
-    getHotStories()
-      .then((data) => setStories(data.results ?? data))
-      .catch(() => setStories([]))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (!loading && stories.length === 0) return null;
+  if (stories.length === 0) return null;
 
   return (
     <section
@@ -31,19 +22,11 @@ export default function HotStories() {
           </p>
         </div>
 
-        {loading ? (
-          <div className="grid md:grid-cols-3 gap-7 mt-14" aria-busy="true">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="h-52 bg-cream/10 rounded-pebble animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-3 gap-7 mt-14">
-            {stories.map((s, i) => (
-              <StoryCard key={s.id} story={s} index={i} />
-            ))}
-          </div>
-        )}
+        <div className="grid md:grid-cols-3 gap-7 mt-14">
+          {stories.map((s, i) => (
+            <StoryCard key={s.id} story={s} index={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

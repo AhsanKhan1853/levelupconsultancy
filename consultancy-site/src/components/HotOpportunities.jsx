@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-import { getHotOpportunities } from "../api/opportunities";
+import { opportunities } from "../Data/opportunitiesData";
 import OpportunityCard from "./OpportunityCard";
 
 export default function HotOpportunities() {
-  const [opportunities, setOpportunities] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const hotOpportunities = opportunities.filter((op) => op.is_hot);
 
-  useEffect(() => {
-    getHotOpportunities()
-      .then((data) => setOpportunities(data.results ?? data))
-      .catch(() => setOpportunities([]))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (!loading && opportunities.length === 0) return null;
+  if (hotOpportunities.length === 0) return null;
 
   return (
     <section
@@ -37,22 +28,11 @@ export default function HotOpportunities() {
           </span>
         </div>
 
-        {loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mt-12" aria-busy="true">
-            {[0, 1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="h-64 bg-cream/70 border border-rule rounded-pebble animate-pulse"
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mt-12">
-            {opportunities.map((op) => (
-              <OpportunityCard key={op.id} opportunity={op} />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mt-12">
+          {hotOpportunities.map((op) => (
+            <OpportunityCard key={op.id} opportunity={op} />
+          ))}
+        </div>
       </div>
     </section>
   );
