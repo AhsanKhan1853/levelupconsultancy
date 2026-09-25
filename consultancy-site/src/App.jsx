@@ -9,7 +9,6 @@ import Destinations from "./components/Destinations";
 import ProcessSteps from "./components/ProcessSteps";
 import HotOpportunities from "./components/HotOpportunities";
 import HotStories from "./components/HotStories";
-import OpportunitySearch from "./components/OpportunitySearch";
 import FeedbackForm from "./components/FeedbackForm";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
@@ -38,7 +37,6 @@ function LandingPage() {
     <div>
       <Navbar />
       <Hero />
-      <OpportunitySearch /> 
       <WhyUs />
       <Services />
       <HotOpportunities />

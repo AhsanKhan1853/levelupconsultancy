@@ -136,7 +136,7 @@ export default function Hero() {
             </div>
 
             <div className="absolute -bottom-6 -left-6 bg-accent rounded-pebble px-7 py-5">
-              <p className="font-display text-5xl font-bold text-night leading-none">20+</p>
+              <p className="font-display text-5xl font-bold text-night leading-none">6+</p>
               <p className="mt-1.5 text-sm text-night font-semibold max-w-[9rem] leading-snug">
                 years guiding students abroad
               </p>

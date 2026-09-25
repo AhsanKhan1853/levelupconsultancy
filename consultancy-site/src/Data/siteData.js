@@ -10,10 +10,10 @@ export const navLinks = [
 
 export const stats = [
   // slugs match the filenames in assets/why-us/ so each stat gets its icon
-  { slug: "years-of-experience", value: "20+", label: "Years of Experience" },
-  { slug: "students-counseled", value: "50K+", label: "Students Counseled" },
-  { slug: "study-destinations", value: "60+", label: "Study Destinations" },
-  { slug: "university-partners", value: "800+", label: "University Partners" },
+  { slug: "years-of-experience", value: "6+", label: "Years of Experience" },
+  { slug: "students-counseled", value: "5K+", label: "Students Counseled" },
+  { slug: "study-destinations", value: "20+", label: "Study Destinations" },
+  { slug: "university-partners", value: "170+", label: "University Partners" },
 ];
 
 export const services = [
