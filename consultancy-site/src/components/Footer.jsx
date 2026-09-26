@@ -1,6 +1,6 @@
 import { FaInstagram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const ADMIN_WHATSAPP_NUMBER = "923119653438";
 
