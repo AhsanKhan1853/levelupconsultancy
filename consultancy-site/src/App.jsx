@@ -7,8 +7,7 @@ import WhyUs from "./components/WhyUs";
 import Services from "./components/Services";
 import Destinations from "./components/Destinations";
 import ProcessSteps from "./components/ProcessSteps";
-import HotOpportunities from "./components/HotOpportunities";
-import HotStories from "./components/HotStories";
+import StoriesCarousel from "./components/StoriesCarousel";
 import FeedbackForm from "./components/FeedbackForm";
 import CTABanner from "./components/CTABanner";
 import Footer from "./components/Footer";
@@ -39,11 +38,10 @@ function LandingPage() {
       <Hero />
       <WhyUs />
       <Services />
-      <HotOpportunities />
       <Destinations />
       <CountriesSection />
       <ProcessSteps />
-      <HotStories />
+      <StoriesCarousel />
       <FeedbackForm />
       <CTABanner />
       <Footer />

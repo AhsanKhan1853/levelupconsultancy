@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import { opportunities } from "../Data/opportunitiesData";
-import OpportunityCard from "../components/OpportunityCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 

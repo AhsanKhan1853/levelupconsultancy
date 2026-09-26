@@ -4,7 +4,6 @@ import { services } from "../Data/siteData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import CTABanner from "../components/CTABanner";
-import OfficeGallery from "../components/OfficeGallery";
 import ServicesHero from "../components/ServicesHero";
 import ServiceCarousel from "../components/ServiceCarousel";
 import ServiceDetailCard from "../components/ServiceDetailCard";
