@@ -15,7 +15,7 @@ import CountriesSection from "./components/CountriesSection";
 import OpportunitiesPage from "./pages/OpportunitiesPage";
 import ServicesPage from "./pages/ServicesPage";
 import DestinationsPage from "./pages/DestinationsPage";
-
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 function LandingPage() {
   const location = useLocation();
@@ -52,6 +52,7 @@ function LandingPage() {
 export default function App() {
   return (
     <BrowserRouter>
+      <FloatingWhatsApp />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/opportunities" element={<OpportunitiesPage />} />
