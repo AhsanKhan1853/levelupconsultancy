@@ -65,28 +65,31 @@ export default function WhyUs() {
         </div>
 
         {/* Stats ribbon — emerald, distinct from the cards above */}
-        <div className="mt-16 bg-emerald-600 rounded-3xl px-6 sm:px-10 py-10 shadow-[0_0_40px_-10px_rgba(16,185,129,0.5)]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 divide-emerald-400/30 lg:divide-x">
-            {stats.map((s) => (
-              <div key={s.slug} className="flex flex-col items-center text-center px-2">
-                <img
-                  src={getLogo(s.slug)}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-14 h-14"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = logos["default"];
-                  }}
-                />
-                <p className="font-display mt-3 text-4xl sm:text-5xl font-bold text-white leading-none">
-                  {s.value}
-                </p>
-                <p className="mt-2 text-sm text-emerald-50">{s.label}</p>
-              </div>
-            ))}
-          </div>
+{/* Stats ribbon — emerald, distinct from the cards above */}
+<div className="mt-16 bg-accent rounded-3xl px-6 sm:px-10 py-10 shadow-[0_0_40px_-10px_rgba(204,135,24,0.5)]">
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 divide-gray lg:divide-x">
+    {stats.map((s) => (
+      <div key={s.slug} className="flex flex-col items-center text-center px-2">
+        <div className="w-14 h-14 rounded-xl bg-goldsoft ring-1 ring-white/20 flex items-center justify-center shadow-[0_4px_14px_-4px_rgba(51,41,26,0.5)]">
+          <img
+            src={getLogo(s.slug)}
+            alt=""
+            aria-hidden="true"
+            className="w-8 h-8 object-contain"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = logos["default"];
+            }}
+          />
         </div>
+        <p className="font-display mt-3 text-4xl sm:text-5xl font-bold text-white leading-none">
+          {s.value}
+        </p>
+        <p className="mt-2 text-sm text-emerald-50">{s.label}</p>
+      </div>
+    ))}
+  </div>
+</div>
       </div>
     </section>
   );

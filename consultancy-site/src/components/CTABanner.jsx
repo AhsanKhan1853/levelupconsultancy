@@ -109,7 +109,7 @@ export default function CTABanner() {
 
           <button
             type="submit"
-            className="mt-2 bg-accent text-white py-3.5 rounded-full font-semibold shadow-lamp hover:bg-primary transition-colors duration-300"
+            className="mt-2 bg-accent text-white py-3.5 rounded-full font-semibold shadow-lamp border border-transparent hover:border-accent hover:bg-primary active:border-accent focus-visible:border-accent transition-colors duration-300"
           >
             Start the conversation
           </button>
