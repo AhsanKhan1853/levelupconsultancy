@@ -1,25 +1,53 @@
-// import ahmedVisa from "../assets/stories/ahmed-visa.jpg";
+import ahmadVisa from "../assets/stories/ahmad_abdullah.webp";
+import junaidVisa from "../assets/stories/m_junaid.webp";
+import taimoorVisa from "../assets/stories/taimoor_moazzam.webp";
+import usamaVisa from "../assets/stories/usama_moazzam.webp";
+import Stories2Visa from "../assets/stories/stories2.webp";
+import AbuBakarVisa from "../assets/stories/abu_bakkar_wajid.webp";
+import Stories3Visa from "../assets/stories/stories3.webp";
+
 
 export const stories = [
   {
-    name: "Ahmed Raza",
-    country: "UK",
+    name: "Ahmad Abdullah",
+    country: "China",
     quote: "The team guided me through every step, from choosing a university to landing in the UK.",
-    photo: null,
-    visaImage: null, // import and set once you have visa photos
+    visaImage: ahmadVisa, // import and set once you have visa photos
   },
   {
-    name: "Sana Malik",
-    country: "Canada",
+    name: "Muhammad Junaid",
+    country: "China",
     quote: "Honest advice and quick responses made my visa process stress-free.",
-    photo: null,
-    visaImage: null,
+    visaImage: junaidVisa,
   },
   {
-    name: "Bilal Khan",
-    country: "Australia",
+    name: "Taimoor Moazzam",
+    country: "China",
     quote: "I couldn't have picked the right program without their counseling.",
-    photo: null,
-    visaImage: null,
+    visaImage: taimoorVisa,
+  },
+  {
+    name: "Usama Moazzam",
+    country: "China",
+    quote: "I couldn't have picked the right program without their counseling.",
+    visaImage: usamaVisa,
+  },
+  {
+    name: "Abu Bakar Wajid",
+    country: "China",
+    quote: "I'm grateful for the personalized attention and guidance they provided.",
+    visaImage: AbuBakarVisa,
+  },
+  // {
+  //   name: "Samiullah Khan",
+  //   country: "China",
+  //   quote: "I'm grateful for the personalized attention and guidance they provided.",
+  //   visaImage: Stories2Visa,
+  // },
+  {
+    name: "Shadman Khan",
+    country: "China",
+    quote: "I'm grateful for the personalized attention and guidance they provided.",
+    visaImage: Stories3Visa,
   },
 ];
