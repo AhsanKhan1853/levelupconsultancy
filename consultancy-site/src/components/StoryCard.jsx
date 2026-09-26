@@ -1,22 +1,19 @@
-import { useState } from "react";
-
-export default function StoryCard({ story }) {
+export default function StoryCard({ story, expanded, onExpand }) {
   const { name, country, quote, visaImage } = story;
-  const [expanded, setExpanded] = useState(false);
 
-  // On touch devices there's no hover, so the first tap expands the image
-  // instead of navigating; a second tap (or tapping the quote/name area)
-  // follows through to WhatsApp, same pattern as the Destinations cards.
+  // On touch devices there's no hover, so the first tap expands this card
+  // (and collapses whichever one was open) instead of navigating; a second
+  // tap on an already-expanded card follows through to WhatsApp.
   const handleClick = (e) => {
     const supportsHover = window.matchMedia("(hover: hover)").matches;
     if (!supportsHover && !expanded) {
       e.preventDefault();
-      setExpanded(true);
+      onExpand();
     }
   };
 
   return (
-    <a
+      <a
       href="#contact"
       onClick={handleClick}
       className="group relative flex flex-col shrink-0 w-[17rem] h-full rounded-lg overflow-hidden
