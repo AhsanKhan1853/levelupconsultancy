@@ -5,6 +5,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import logo from "../assets/logo.webp";
 import whatsappIcon from "../assets/whatsapp-logo.webp";
+import { FaWhatsapp } from "react-icons/fa";
 
 const WHATSAPP_NUMBER = "923119653438";
 const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -95,11 +96,10 @@ export default function Navbar() {
   target="_blank"
   rel="noopener noreferrer"
   aria-label="WhatsApp Us"
-  className="w-11 h-11 flex items-center justify-center hover:scale-105 transition-transform"
+  className="w-9 h-9 flex items-center justify-center rounded-full bg-emerald-500 text-night hover:bg-emerald-400 transition-colors"
 >
-  <img src={whatsappIcon} alt="" className="w-full h-full object-contain" />
+  <FaWhatsapp className="text-base" />
 </a>
-
   <button
     className="text-2xl shrink-0 text-smoke"
     onClick={() => setOpen(!open)}
