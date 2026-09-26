@@ -4,7 +4,7 @@ import { navLinks } from "../Data/siteData";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import logo from "../assets/logo.webp";
-import { FaWhatsapp } from "react-icons/fa";
+import whatsappIcon from "../assets/whatsapp-logo.webp";
 
 const WHATSAPP_NUMBER = "923119653438";
 const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -79,26 +79,26 @@ export default function Navbar() {
             </span>
           ))}
         </nav>
-          <a     
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden lg:flex items-center gap-2 bg-emerald-500 text-night font-bold px-5 py-2.5 rounded-full hover:bg-emerald-400 transition-colors"
-        >
-          <FaWhatsapp className="text-lg" />
-          WhatsApp Us
-        </a>
+       <a     
+  href={whatsappLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hidden lg:flex items-center gap-2.5 bg-emerald-500 text-night font-bold pl-2 pr-5 py-2 rounded-full hover:bg-emerald-400 transition-colors"
+>
+  <img src={whatsappIcon} alt="" className="w-8 h-8 rounded-full" />
+  WhatsApp Us
+</a>
 
       <div className="flex items-center gap-2 lg:hidden">
-  <a
-    href={whatsappLink}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp Us"
-    className="w-9 h-9 flex items-center justify-center rounded-full bg-emerald-500 text-night hover:bg-emerald-400 transition-colors"
-  >
-    <FaWhatsapp className="text-base" />
-  </a>
+ <a
+  href={whatsappLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="WhatsApp Us"
+  className="w-11 h-11 flex items-center justify-center hover:scale-105 transition-transform"
+>
+  <img src={whatsappIcon} alt="" className="w-full h-full object-contain" />
+</a>
 
   <button
     className="text-2xl shrink-0 text-smoke"
